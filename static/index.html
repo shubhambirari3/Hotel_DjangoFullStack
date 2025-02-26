@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinsley Resort</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            position:fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            z-index:99;
+            width: 100%;
+        }
+        .navbar a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+        
+        @keyframes slowZoom {
+                 0% { background-size: 100%; } /* Normal size */
+                50% { background-size: 110%; } /* Zoom in */
+                100% { background-size: 100%; } /* Zoom out */
+                }
+        .hero {
+            position: relative;
+            background-image: url('images/img-banner-2-scaled-1-1920x1315.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            background-blend-mode: darken;
+            height: 100vh;
+            color: white;
+            text-align: center;
+           animation: slowZoom 10s infinite ease-in-out;
+        }
+        
+       
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: large;
+            font-weight: bold;
+        }
+        .hero-content p{
+            color:white;
+        }
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .search-form input,
+        .search-form select,
+        .search-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .search-form label{
+            background-color: #f8fcfd;
+            color: rgba(0, 0, 0, 0.639);
+            display: flex; /* Use flexbox for alignment */
+            justify-content: center; /* Centers horizontally */
+            align-items: center; /* Centers vertically */
+            height: 50px; 
+            width: 100%;
+        }
+        *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+.menu {
+    display: flex;
+    gap: 25px; /* Space between menu items */
+   
+  }
+
+  
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #007BFF; /* Change color on hover */
+}
+/* Book Now Button and Icon */
+.book {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between the button and the icon */
+}
+
+.book button {
+    background-color: #3366FF; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book button:hover {
+    background-color: #004FCC; /* Button hover color */
+}
+
+.book i {
+    font-size: 20px;
+    color: #333;
+    position: relative;
+}
+
+.book i::after {
+    content: "0"; /* Notification badge */
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #28A745;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+            
+       </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><h2>Kinsley</h2></div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="about.html">About</a>
+            <a href="rooms.html">Rooms</a>
+            <a href="Restaurant.html">Restaurant</a>
+            <a href="Blog.html">Blog</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class = "book">
+            <button>Book now</button>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Kinsley</h1>
+            <p>Delenti nostrum laboriosam praesentium quasi quam voluptate.</p>
+            <div class="search-form">
+                <label for="Check-in Date">Check-in Date</label>
+                <input type="date" name="Check-in Date" id="Check-in Date">
+                <label for="Check-out Date">Check-out Date</label>
+                <input type="date" placeholder="Check-out Date" id="Check-in Date">
+                <select>
+                    <option value="1">1 Adult</option>
+                    <option value="2">2 Adults</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <select>
+                    <option value="0">0 Children</option>
+                    <option value="1">1 Child</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <label for="Search"><i class="fas fa-search"></i></label>
+            </div>
+        </div>
+    </section>
+    <section style="background-color: #f8fcfd; padding: 50px 0;">
+        <!-- Features Section -->
+        <div class="features" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 50px;">
+            <div class="feature-item" style="text-align: center; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+              <img src="images/f-1.png" alt="Airport Transfer Icon" style="width: 30px; height: 30px;">
+                <p>Airport transfer</p>
+            </div>
+            <div class="feature-item" style="text-align: center; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+              <img src="images/f-2.png" alt="All Inclusive Icon" style="width: 30px; height: 30px;">           
+                 <p>All inclusive</p>
+            </div>
+            <div class="feature-item" style="text-align: center; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+              <img src="images/f-3.png" alt="Air Conditioned Icon" style="width: 30px; height: 30px;">
+                <p>Air-conditioned</p>
+            </div>
+            <div class="feature-item" style="text-align: center; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+              <img src="images/f-4.png" alt="Under Protection Icon" style="width: 30px; height: 30px;">
+                <p>Under protection</p>
+            </div>
+        </div>
+        
+        <!-- Experience Section -->
+        <div class="experience" style="display: flex; align-items: center; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <!-- Image -->
+            <div class="experience-image" style="flex: 1;">
+                <img src="images/about-t1.jpg" alt="Hotel" style="width: 100%; border-radius: 10px;">
+            </div>
+            <!-- Text -->
+            <div class="experience-text" style="flex: 1; text-align: left;">
+                <h2 style="font-size: 28px; margin-bottom: 20px;">We have 17+ years of Experience</h2>
+                <p style="margin-bottom: 20px; color: #555;">
+                    Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. 
+                    Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
+                </p>
+                <a href="#" style="display: inline-block; padding: 10px 20px; 
+                background: #4a90e2; color: white; border-radius: 5px; text-decoration: none;">More about us</a>
+            </div>
+        </div>
+    </section>
+    <section style="background-color: #f8fcfd; padding: 50px 0;">
+        <!-- Start Your Amazing Adventure Section -->
+        <div class="adventure-section" style="display: flex; align-items: center; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <!-- Text -->
+            <div class="adventure-text" style="flex: 1; text-align: left;">
+                <h2 style="font-size: 28px; margin-bottom: 20px;">Start your Amazing Adventure!</h2>
+                <p style="margin-bottom: 20px; color: #555;">
+                    Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. 
+                    Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
+                </p>
+                <a href="#" style="display: inline-block; padding: 10px 20px; background: #4a90e2; color: white; border-radius: 5px; text-decoration: none;">Choose a room</a>
+            </div>
+            <!-- Image -->
+            <div class="adventure-image" style="flex: 1;">
+                <img src="images/about-t2.jpg" alt="Building" style="width: 100%; border-radius: 10px;">
+            </div>
+        </div>
+    </section>
+    
+    <section style="background-color: #c4eff96b; padding: 50px 0;">
+        <!-- Kinsley is Waiting for You Section -->
+        <div class="waiting-section" style="text-align: center; padding: 50px 20px;">
+            <h2 style="font-size: 28px; margin-bottom: 20px;">Kinsley is Waiting for You!</h2>
+            <p style="margin-bottom: 20px; color: #555; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. 
+                Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
+            </p>
+            <a href="#" style="display: inline-block; padding: 10px 20px; background: #4a90e2; color: white; border-radius: 5px; text-decoration: none;">More our places</a>
+        </div>
+    </section>
+        <!---- images Section-->
+        <section class="adventure-section">
+            <div class="adventure-image">
+                <img src="images/about-1.jpg" alt="View from the Sea">
+                <div class="image-label">View from the Sea</div>
+            </div>
+            <div class="adventure-image">
+                <img src="images/about-2.jpg" alt="East Terrace">
+                <div class="image-label">East Terrace</div>
+            </div>
+            <div class="adventure-image">
+                <img src="images/about-3.jpg" alt="West Terrace">
+                <div class="image-label">West Terrace</div>
+            </div>
+        </section>
+                <!---End of section-->
+    <section class="stats-section">
+        <div class="stats-container">
+          <div class="stat-item">
+            <h1>4</h1>
+            <p>Hotels</p>
+          </div>
+          <div class="stat-item">
+            <h1>127</h1>
+            <p>Rooms</p>
+          </div>
+          <div class="stat-item">
+            <h1>6</h1>
+            <p>Beaches</p>
+          </div>
+          <div class="stat-item">
+            <h1>4586</h1>
+            <p>Guests</p>
+          </div>
+        </div>
+      </section>
+      <section class="rooms-section">
+        <h2>Our Best Rooms</h2>
+        <p>
+          Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. Laborum
+          accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
+        </p>
+        <button class="btn">All rooms</button>
+      </section>
+      <!-----end of section-->
+      <!----Room -->    
+  <div class="container">
+    <div class="room-card">
+      <img src="images/room-1.jpg" alt="Deluxe Room">
+      <div class="room-details">
+        <div class="info">
+          <span>Adults: 4</span>
+          <span>Size: 95ft²</span>
+        </div>
+        <h3>Deluxe Room</h3>
+        <p>Image for cattle earth. May one Which life divide sea...</p>
+        <div class="price">
+          <span>49 per night</span>
+          <button>Book</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <img src="images/room-2.jpg" alt="Standard Room">
+      <div class="room-details">
+        <div class="info">
+          <span>Adults: 2</span>
+          <span>Size: 50ft²</span>
+        </div>
+        <h3>Standard Room</h3>
+        <p>Image for cattle earth. May one Which life divide sea...</p>
+        <div class="price">
+          <span>29 per night</span>
+          <button>Book</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <img src="images/room-3.jpg" alt="Double Room">
+      <div class="room-details">
+        <div class="info">
+          <span>Adults: 2</span>
+          <span>Size: 35ft²</span>
+        </div>
+        <h3>Double Room</h3>
+        <p>Image for cattle earth. May one Which life divide sea...</p>
+        <div class="price">
+          <span>39 per night</span>
+          <button>Book</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!---Feedback-->
+  <section class="rooms-section">
+    <h2>Feedback from our Guests</h2>
+    <p>
+        Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. 
+        Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
+    </p>
+    </section>
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="testimonial">
+          <div class="profile">
+            <img src="images/faces-1-140x140.jpg" alt="Oscar Newman">
+            <h3>Oscar Newman</h3>
+            <p>From Poland</p>
+          </div>
+          <div class="testimonial-content">
+            <div class="stars">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo magnam voluptatem a tempora id vitae dolor.</p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="profile">
+            <img src="images/faces-2-140x140.jpg" alt="Emma Trueman">
+            <h3>Emma Trueman</h3>
+            <p>From Poland</p>
+          </div>
+          <div class="testimonial-content">
+            <div class="stars">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo magnam voluptatem a tempora id vitae dolor.</p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="profile">
+            <img src="images/faces-3-scaled-1-140x140.jpg" alt="Viktoria Freeman">
+            <h3>Viktoria Freeman</h3>
+            <p>From Ukraine</p>
+          </div>
+          <div class="testimonial-content">
+            <div class="stars">
+              ⭐⭐⭐⭐⭐
+            </div>
+            <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo magnam voluptatem a tempora id vitae dolor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="rooms-section">
+      <h1>Our Newsletter</h1>
+      <p>
+          Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. 
+          Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
+      </p>
+      <button class="btn">All Publications  </button>
+      </section>
+    
+    
+        
+      <!-----end of section-->
+     
+  <!------Publications-->
+  <!-- Content Section -->
+  <section class="container">
+    <div class="room-card">
+      <img src="images/blog-1-950x713.jpg" alt="no image">
+      <div class="room-details">
+        <div class="info">
+          <span>Hana Evans</span>
+          <span>December 21, 2021</span>
+        </div>
+        <h3>The Ultimate Guide to Traveling When You Have No Money</h3>
+        <p>Image for cattle earth. May one Which life divide sea...</p>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <img src="images/blog-2-1-950x608.jpg" alt="no image">
+      <div class="room-details">
+        <div class="info">
+          <span>Hana Evans</span>
+          <span>December 21, 2021</span>
+        </div>
+        <h3>The Best Travels Insurance Companies for Seniors</h3>
+        <p>Image for cattle earth. May one Which life divide sea...</p>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <img src="images/blog-3-950x634.jpg" alt="no image">
+      <div class="room-details">
+        <div class="info">
+          <span>Hana Evans</span>
+          <span>December 21, 2021</span>
+        </div>
+        <h3>18 Easy Steps for Planning Your Next Trip</h3>
+        <p>Image for cattle earth. May one Which life divide sea...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Brand Section -->
+      <div class="footer-brand">
+        <h2>Kinsley</h2>
+        <p>
+          Sequi dolores ratione eos eveniet provident soluta. Omnis nesciunt sit eos at,
+          eius voluptatum rem corporis. Doloremque labore assumenda explicabo velit illo,
+          soluta, inventore hic.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fas fa-times"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube-square"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+        </div>
+      </div>
+
+      <!-- Menu Section -->
+      <div class="footer-menu">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Rooms</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Meet Kinsley Section -->
+      <div class="footer-meet">
+        <h3>Meet Kinsley</h3>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Menu</a></li>
+          <li><a href="#">Restaurant</a></li>
+        </ul>
+      </div>
+
+      <!-- Instagram Section -->
+      <div class="footer-instagram">
+        <h3>Instagram</h3>
+        <div class="instagram-gallery">
+          <img src="images/about-1-140x140.jpg" alt="Instagram 1">
+          <img src="images/about-2-140x140.jpg" alt="Instagram 2">
+          <img src="images/about-3-140x140.jpg" alt="Instagram 3">
+          <img src="images/about-4-140x140.jpg" alt="Instagram 4">
+          <img src="images/about-5-140x140.jpg" alt="Instagram 5">
+          <img src="images/about-6-140x140.jpg" alt="Instagram 6">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!---End-->
+</body> 
+</html>
