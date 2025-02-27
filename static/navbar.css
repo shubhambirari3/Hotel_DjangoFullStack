@@ -1,0 +1,68 @@
+.navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    z-index: 99;
+    width: 100%;
+}
+.navbar a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+}
+.menu {
+    display: flex;
+    gap: 25px;
+}
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.menu a:hover {
+    color: #007BFF;
+}
+.book {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.book button {
+    background-color: #3366FF;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.book button:hover {
+    background-color: #004FCC;
+}
+.book i {
+    font-size: 20px;
+    color: #333;
+    position: relative;
+}
+.book i::after {
+    content: "0";
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #28A745;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

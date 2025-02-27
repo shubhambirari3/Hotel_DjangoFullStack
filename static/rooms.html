@@ -10,100 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
           integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            position: fixed;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: white;
-            z-index: 99;
-            width: 100%;
-        }
-        .navbar a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: black;
-        }
-        .menu {
-            display: flex;
-            gap: 25px;
-        }
-        .menu a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .menu a:hover {
-            color: #007BFF;
-        }
-        .book {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .book button {
-            background-color: #3366FF;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .book button:hover {
-            background-color: #004FCC;
-        }
-        .book i {
-            font-size: 20px;
-            color: #333;
-            position: relative;
-        }
-        .book i::after {
-            content: "0";
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            background-color: #28A745;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo"><h2>Kinsley</h2></div>
-        <div class="menu">
-            <a href="#">Home</a>
-            <a href="{% url 'rooms:room_list' %}">Rooms</a>
-            <a href="#">About</a>
-            <a href="#">Restaurant</a>
-            <a href="#">Blog</a>
-            <a href="#">Shop</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="book">
-            <button>Book now</button>
-            <i class="fas fa-shopping-bag"></i>
-        </div>
-    </nav>
+    {% include 'navbar.html' %}
 
     <!-- Main Content -->
     <section class="rooms-section">
@@ -152,50 +62,6 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <h2>Kinsley</h2>
-                <p>Sequi dolores ratione eos eveniet provident soluta. Omnis nesciunt sit eos at, eius voluptatum rem corporis...</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fas fa-times"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-youtube-square"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-menu">
-                <h3>Menu</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Rooms</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-meet">
-                <h3>Meet Kinsley</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Menu</a></li>
-                    <li><a href="#">Restaurant</a></li>
-                </ul>
-            </div>
-            <div class="footer-instagram">
-                <h3>Instagram</h3>
-                <div class="instagram-gallery">
-                    <img src="{% static 'images/about-1-140x140.jpg' %}" alt="Instagram 1">
-                    <img src="{% static 'images/about-2-140x140.jpg' %}" alt="Instagram 2">
-                    <img src="{% static 'images/about-3-140x140.jpg' %}" alt="Instagram 3">
-                    <img src="{% static 'images/about-4-140x140.jpg' %}" alt="Instagram 4">
-                    <img src="{% static 'images/about-5-140x140.jpg' %}" alt="Instagram 5">
-                    <img src="{% static 'images/about-6-140x140.jpg' %}" alt="Instagram 6">
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include 'footer.html' %}
 </body>
 </html>
