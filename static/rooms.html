@@ -3,461 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Rooms - Kinsley</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            z-index: 99;
+            width: 100%;
+        }
+        .navbar a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .menu {
+            display: flex;
+            gap: 25px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .menu a:hover {
+            color: #007BFF;
+        }
+        .book {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .book button {
+            background-color: #3366FF;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .book button:hover {
+            background-color: #004FCC;
+        }
+        .book i {
+            font-size: 20px;
+            color: #333;
+            position: relative;
+        }
+        .book i::after {
+            content: "0";
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #28A745;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-          <section class="rooms-section">
-            <h1>Choose your Room</h1>
-            <p>
-                Laborum accusantium libero commodi. Voluptate consequatur itaque expedita 
-            accusamus impedit perspiciatis asperiores necessitatibus assumenda magnam ipsa.
-            </p>
-          <!-- Breadcrumb -->
-          <div class="breadcrumb">
-            <span><a href="index.html">Home</span></a> &gt; <span class="current">Rooms</span>
-          </div>
-        </section>
-          <!-- Room Filters -->
-           <section class="rooms-section">
-          <div class="filters">
-            <button class="filter active">All Rooms</button>
-            <button class="filter"> Economy</button>
-            <button class="filter">Luxe</button>
-            <button class="filter">Standard</button>
-          </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><h2>Kinsley</h2></div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="{% url 'rooms:room_list' %}">Rooms</a>
+            <a href="#">About</a>
+            <a href="#">Restaurant</a>
+            <a href="#">Blog</a>
+            <a href="#">Shop</a>
+            <a href="#">Contact</a>
         </div>
-      </section>
+        <div class="book">
+            <button>Book now</button>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
+    </nav>
 
-      <div class="container">
-        <div class="room-card">
-          <img src="images/room-1.jpg" alt="Deluxe Room">
-          <div class="room-details">
-            <div class="info">
-              <span>Adults: 4</span>
-              <span>Size: 95ft²</span>
-            </div>
-            <h3>Deluxe Room</h3>
-            <p>Image for cattle earth. May one Which life divide sea...</p>
-            <div class="price">
-              <span>49 per night</span>
-              <button>Book</button>
-            </div>
-          </div>
-        </div>
-    
-        <div class="room-card">
-          <img src="images/room-2.jpg" alt="Standard Room">
-          <div class="room-details">
-            <div class="info">
-              <span>Adults: 2</span>
-              <span>Size: 50ft²</span>
-            </div>
-            <h3>Standard Room</h3>
-            <p>Image for cattle earth. May one Which life divide sea...</p>
-            <div class="price">
-              <span>29 per night</span>
-              <button>Book</button>
-            </div>
-          </div>
-        </div>
-    
-        <div class="room-card">
-          <img src="images/room-3.jpg" alt="Double Room">
-          <div class="room-details">
-            <div class="info">
-              <span>Adults: 2</span>
-              <span>Size: 35ft²</span>
-            </div>
-            <h3>Double Room</h3>
-            <p>Image for cattle earth. May one Which life divide sea...</p>
-            <div class="price">
-              <span>39 per night</span>
-              <button>Book</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-    <div class="room-card">
-      <img src="images/room-1.jpg" alt="Deluxe Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 4</span>
-          <span>Size: 95ft²</span>
-        </div>
-        <h3>Deluxe Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>49 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-2.jpg" alt="Standard Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 2</span>
-          <span>Size: 50ft²</span>
-        </div>
-        <h3>Standard Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>29 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-3.jpg" alt="Double Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 2</span>
-          <span>Size: 35ft²</span>
-        </div>
-        <h3>Double Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>39 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-
-  <!---Second Hotel romm-->
-  <div class="container">
-    <div class="room-card">
-      <img src="images/room-4.jpg" alt="Classic Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 3</span>
-          <span>Size: 42ft²</span>
-        </div>
-        <h3>Classic Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>35 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-7.jpg" alt="Triple Classic Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 3</span>
-          <span>Size: 42ft²</span>
-        </div>
-        <h3>Triple Classic Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>79 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-8.jpg" alt="Business Class Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 2</span>
-          <span>Size: 35ft²</span>
-        </div>
-        <h3>Business Class Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>59 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <!-----End sec-->
-  <!---3 Room details-->
-  <div class="container">
-    <div class="room-card">
-      <img src="images/room-6.jpg" alt="Royal Class Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 2</span>
-          <span>Size: 50ft²</span>
-        </div>
-        <h3>Royal Class Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>119 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-5.jpg" alt="Superior Ocean Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 4</span>
-          <span>Size: 95ft²</span>
-        </div>
-        <h3>Superior Ocean Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>19 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-12.jpg" alt="Economy Classic Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 2</span>
-          <span>Size: 20ft²</span>
-        </div>
-        <h3>Economy Classic Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>27 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-
-  <!---End of 3 Room details-->
-      
-  <section class="rooms-section">
-    <h2>Our Best Rooms</h2>
-    <p>
-      Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. Laborum
-      accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
-    </p>
-    <button class="btn">All Rooms</button>
-  </section>
-  <br>
-  <div class="container">
-    <div class="room-card">
-      <img src="images/room-1.jpg" alt="Deluxe Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 4</span>
-          <span>Size: 95ft²</span>
-        </div>
-        <h3>Deluxe Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>49 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-2.jpg" alt="Standard Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 2</span>
-          <span>Size: 50ft²</span>
-        </div>
-        <h3>Standard Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>29 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <img src="images/room-3.jpg" alt="Double Room">
-      <div class="room-details">
-        <div class="info">
-          <span>Adults: 2</span>
-          <span>Size: 35ft²</span>
-        </div>
-        <h3>Double Room</h3>
-        <p>Image for cattle earth. May one Which life divide sea...</p>
-        <div class="price">
-          <span>39 per night</span>
-          <button>Book</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Feed back-->
-<section class="rooms-section">
-    <h2>Feedback from our Guests</h2>
-    <p>
-        Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. 
-        Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
-    </p>
-    </section>
-    <section class="testimonials-section">
-      <div class="container">
-        <div class="testimonial">
-          <div class="profile">
-            <img src="images/faces-1-140x140.jpg" alt="Oscar Newman">
-            <h3>Oscar Newman</h3>
-            <p>From Poland</p>
-          </div>
-          <div class="testimonial-content">
-            <div class="stars">
-              ⭐⭐⭐⭐⭐
-            </div>
-            <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo magnam voluptatem a tempora id vitae dolor.</p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <div class="profile">
-            <img src="images/faces-2-140x140.jpg" alt="Emma Trueman">
-            <h3>Emma Trueman</h3>
-            <p>From Poland</p>
-          </div>
-          <div class="testimonial-content">
-            <div class="stars">
-              ⭐⭐⭐⭐⭐
-            </div>
-            <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo magnam voluptatem a tempora id vitae dolor.</p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <div class="profile">
-            <img src="images/faces-3-scaled-1-140x140.jpg" alt="Viktoria Freeman">
-            <h3>Viktoria Freeman</h3>
-            <p>From Ukraine</p>
-          </div>
-          <div class="testimonial-content">
-            <div class="stars">
-              ⭐⭐⭐⭐⭐
-            </div>
-            <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo magnam voluptatem a tempora id vitae dolor.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  
+    <!-- Main Content -->
     <section class="rooms-section">
-      <h1>Our Newsletter</h1>
-      <p>
-          Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. 
-          Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
-      </p>
-      <button class="btn">All Publications  </button>
-      </section>
-    
-    
-  <!-----end of section-->
-  
-  <!------Publications-->
-  <!-- Content Section -->
-  <section class="container">
-  <div class="room-card">
-  <img src="images/blog-1-950x713.jpg" alt="no image">
-  <div class="room-details">
-    <div class="info">
-      <span>Hana Evans</span>
-      <span>December 21, 2021</span>
+        <h1>Choose your Room</h1>
+        <p>Laborum accusantium libero commodi...</p>
+        <div class="breadcrumb">
+            <span><a href="#">Home</a></span> > <span class="current">Rooms</span>
+        </div>
+    </section>
+
+    <!-- Room Filters -->
+    <section class="rooms-section">
+        <div class="filters">
+            <a href="{% url 'rooms:room_list' %}?category=all" class="filter {% if selected_category == 'all' %}active{% endif %}">All Rooms</a>
+            {% for category in categories %}
+                <a href="{% url 'rooms:room_list' %}?category={{ category.name|lower }}" class="filter {% if selected_category == category.name|lower %}active{% endif %}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Room Listings -->
+    <div class="container">
+        {% for room in rooms %}
+        <div class="room-card">
+            {% if room.image %}
+                <img src="{{ room.image.url }}" alt="{{ room.name }}">
+            {% else %}
+                <img src="{% static 'images/placeholder.jpg' %}" alt="No image available">
+            {% endif %}
+            <div class="room-details">
+                <div class="info">
+                    <span>Adults: {{ room.capacity }}</span>
+                    <span>Size: {{ room.get_size_display }}</span>
+                </div>
+                <h3>{{ room.name }}</h3>
+                <p>{{ room.description }}</p>
+                <div class="price">
+                    <span>${{ room.price }} per night</span>
+                    <button>Book</button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No rooms available in this category.</p>
+        {% endfor %}
     </div>
-    <h3>The Ultimate Guide to Traveling When You Have No Money</h3>
-    <p>Image for cattle earth. May one Which life divide sea...</p>
-  </div>
-  </div>
-  
-  <div class="room-card">
-  <img src="images/blog-2-1-950x608.jpg" alt="no image">
-  <div class="room-details">
-    <div class="info">
-      <span>Hana Evans</span>
-      <span>December 21, 2021</span>
-    </div>
-    <h3>The Best Travels Insurance Companies for Seniors</h3>
-    <p>Image for cattle earth. May one Which life divide sea...</p>
-  </div>
-  </div>
-  
-  <div class="room-card">
-  <img src="images/blog-3-950x634.jpg" alt="no image">
-  <div class="room-details">
-    <div class="info">
-      <span>Hana Evans</span>
-      <span>December 21, 2021</span>
-    </div>
-    <h3>18 Easy Steps for Planning Your Next Trip</h3>
-    <p>Image for cattle earth. May one Which life divide sea...</p>
-  </div>
-  </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer class="footer">
-  <div class="footer-container">
-  <!-- Brand Section -->
-  <div class="footer-brand">
-    <h2>Kinsley</h2>
-    <p>
-      Sequi dolores ratione eos eveniet provident soluta. Omnis nesciunt sit eos at,
-      eius voluptatum rem corporis. Doloremque labore assumenda explicabo velit illo,
-      soluta, inventore hic.
-    </p>
-    <div class="social-icons">
-      <a href="#"><i class="fas fa-times"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-youtube-square"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a> 
-    </div>
-  </div>
-  
-  <!-- Menu Section -->
-  <div class="footer-menu">
-    <h3>Menu</h3>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Rooms</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Contact Us</a></li>
-    </ul>
-  </div>
-  
-  <!-- Meet Kinsley Section -->
-  <div class="footer-meet">
-    <h3>Meet Kinsley</h3>
-    <ul>
-      <li><a href="#">FAQ</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a href="#">Menu</a></li>
-      <li><a href="#">Restaurant</a></li>
-    </ul>
-  </div>
-  
-  <!-- Instagram Section -->
-  <div class="footer-instagram">
-    <h3>Instagram</h3>
-    <div class="instagram-gallery">
-      <img src="images/about-1-140x140.jpg" alt="Instagram 1">
-      <img src="images/about-2-140x140.jpg" alt="Instagram 2">
-      <img src="images/about-3-140x140.jpg" alt="Instagram 3">
-      <img src="images/about-4-140x140.jpg" alt="Instagram 4">
-      <img src="images/about-5-140x140.jpg" alt="Instagram 5">
-      <img src="images/about-6-140x140.jpg" alt="Instagram 6">
-    </div>
-  </div>
-  </div>
-  </footer>
-  <!---End-->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>Kinsley</h2>
+                <p>Sequi dolores ratione eos eveniet provident soluta. Omnis nesciunt sit eos at, eius voluptatum rem corporis...</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fas fa-times"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube-square"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-menu">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Rooms</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-meet">
+                <h3>Meet Kinsley</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Restaurant</a></li>
+                </ul>
+            </div>
+            <div class="footer-instagram">
+                <h3>Instagram</h3>
+                <div class="instagram-gallery">
+                    <img src="{% static 'images/about-1-140x140.jpg' %}" alt="Instagram 1">
+                    <img src="{% static 'images/about-2-140x140.jpg' %}" alt="Instagram 2">
+                    <img src="{% static 'images/about-3-140x140.jpg' %}" alt="Instagram 3">
+                    <img src="{% static 'images/about-4-140x140.jpg' %}" alt="Instagram 4">
+                    <img src="{% static 'images/about-5-140x140.jpg' %}" alt="Instagram 5">
+                    <img src="{% static 'images/about-6-140x140.jpg' %}" alt="Instagram 6">
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

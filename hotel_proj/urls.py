@@ -5,9 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('rooms.urls', namespace='rooms')),
-    path('hotels/', include('hotels.urls', namespace='hotels')),
-    # Other URL patterns here
+    path('', include('rooms.urls')),
 ]
 
 # Serve media files during development
