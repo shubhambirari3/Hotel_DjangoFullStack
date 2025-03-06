@@ -15,4 +15,4 @@ def room_list(request):
         'categories': categories,
         'selected_category': category_name,
     }
-    return render(request, 'rooms.html', context)
+    return render(request, 'rooms/rooms.html', context)
