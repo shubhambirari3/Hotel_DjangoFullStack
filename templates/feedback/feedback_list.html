@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Feedback</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fc;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            background: #eef5fc;
+            padding: 30px 0;
+        }
+        .header h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .header p {
+            color: #666;
+            max-width: 700px;
+            margin: auto;
+        }
+        .feedback-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+        }
+        .feedback-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ddd;
+        }
+        .feedback-card h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .feedback-card p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 14px;
+        }
+        .stars {
+            color: gold;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .feedback-box {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+
+    <div class="header">
+        <h2>Feedback from our Guests</h2>
+        <p>We value our guests' feedback and love hearing about your experiences!</p>
+    </div>
+
+    <div class="feedback-container">
+        <!-- Generating 25 Feedback Entries -->
+        <script>
+            const feedbacks = [
+                { name: "Oscar Newman", country: "Poland", rating: 5, review: "Amazing experience, will come again!", img: "https://randomuser.me/api/portraits/men/1.jpg" },
+                { name: "Emma Trueman", country: "Poland", rating: 5, review: "Absolutely loved everything!", img: "https://randomuser.me/api/portraits/women/2.jpg" },
+                { name: "Viktoria Freeman", country: "Ukraine", rating: 5, review: "One of the best stays ever!", img: "https://randomuser.me/api/portraits/women/3.jpg" },
+                { name: "Liam Smith", country: "USA", rating: 4, review: "Great place, but could improve Wi-Fi speed.", img: "https://randomuser.me/api/portraits/men/4.jpg" },
+                { name: "Sophia Johnson", country: "Canada", rating: 3, review: "Good stay, but not worth the price.", img: "https://randomuser.me/api/portraits/women/5.jpg" },
+                { name: "Noah Brown", country: "UK", rating: 1, review: "Worst experience! Will never return.", img: "https://randomuser.me/api/portraits/men/6.jpg" },
+               
+            ];
+
+            feedbacks.forEach(feedback => {
+                document.write(`
+                    <div class="feedback-card">
+                        <img src="${feedback.img}" alt="${feedback.name}">
+                        <h3>${feedback.name}</h3>
+                        <p>From ${feedback.country}</p>
+                        <div class="stars">${"⭐".repeat(feedback.rating)}</div>
+                        <div class="feedback-box">
+                            <p>${feedback.review}</p>
+                        </div>
+                    </div>
+                `);
+            });
+        </script>
+    </div>
+
+     <!-- Footer -->
+     {% include 'footer.html' %}
+</body>
+</html>
+
+
