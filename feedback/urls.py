@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import feedback_view, feedback_list  # Import both views
+from .views import submit_feedback, feedback_list
 
-app_name = 'feedback'  # Namespace for the app
+app_name = 'feedback'
 
 urlpatterns = [
-    path('', feedback_view, name='feedback_view'),          # Feedback form page
-    path('list/', feedback_list, name='feedback_list'),     # Feedback list page
+    path('submit/<int:room_id>/', submit_feedback, name='submit_feedback'),
+    path('list/', feedback_list, name='feedback_list'),
 ]

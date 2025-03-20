@@ -32,7 +32,8 @@
   .rooms-section {
     text-align: center;
     padding: 3rem 2rem;
-    background-color: #f0f8ff;
+    background-color: #ecfafb;
+    opacity: 1;
   }
   
   .rooms-section h2 {

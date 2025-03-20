@@ -83,41 +83,57 @@
     {% include 'navbar.html' %}
 
     <div class="header">
-        <h2>Feedback from our Guests</h2>
-        <p>We value our guests' feedback and love hearing about your experiences!</p>
+        <h2>All Feedback</h2>
+        <p>See what our guests are saying about their stay.</p>
     </div>
 
     <div class="feedback-container">
-        <!-- Generating 25 Feedback Entries -->
-        <script>
-            const feedbacks = [
-                { name: "Oscar Newman", country: "Poland", rating: 5, review: "Amazing experience, will come again!", img: "https://randomuser.me/api/portraits/men/1.jpg" },
-                { name: "Emma Trueman", country: "Poland", rating: 5, review: "Absolutely loved everything!", img: "https://randomuser.me/api/portraits/women/2.jpg" },
-                { name: "Viktoria Freeman", country: "Ukraine", rating: 5, review: "One of the best stays ever!", img: "https://randomuser.me/api/portraits/women/3.jpg" },
-                { name: "Liam Smith", country: "USA", rating: 4, review: "Great place, but could improve Wi-Fi speed.", img: "https://randomuser.me/api/portraits/men/4.jpg" },
-                { name: "Sophia Johnson", country: "Canada", rating: 3, review: "Good stay, but not worth the price.", img: "https://randomuser.me/api/portraits/women/5.jpg" },
-                { name: "Noah Brown", country: "UK", rating: 1, review: "Worst experience! Will never return.", img: "https://randomuser.me/api/portraits/men/6.jpg" },
-               
-            ];
-
-            feedbacks.forEach(feedback => {
-                document.write(`
-                    <div class="feedback-card">
-                        <img src="${feedback.img}" alt="${feedback.name}">
-                        <h3>${feedback.name}</h3>
-                        <p>From ${feedback.country}</p>
-                        <div class="stars">${"⭐".repeat(feedback.rating)}</div>
-                        <div class="feedback-box">
-                            <p>${feedback.review}</p>
-                        </div>
-                    </div>
-                `);
-            });
-        </script>
+        {% for feedback in feedbacks %}
+        <div class="feedback-card">
+            {% if feedback.user and feedback.user.profile.profile_picture %}
+                <img src="{{ feedback.user.profile.profile_picture.url }}" alt="{{ feedback.user.username }}'s Profile">
+            {% else %}
+                <img src="{% static 'images/profile_placeholder.jpg' %}" alt="Anonymous Profile">
+            {% endif %}
+            <h3>
+                {% if feedback.user %}
+                    {{ feedback.user.get_full_name }}
+                {% else %}
+                    {{ feedback.name }}
+                {% endif %}
+            </h3>
+            <p>
+                {% if feedback.user %}
+                    {{ feedback.user.email }}
+                {% else %}
+                    {{ feedback.email }}
+                {% endif %}
+            </p>
+            <p>From {{ feedback.country|default:'Not specified' }}</p>
+            
+            <div class="stars">
+                {% for i in "12345" %}
+                    {% if forloop.counter <= feedback.rating %}
+                        ★
+                    {% else %}
+                        ☆
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="feedback-box">
+                <p>{{ feedback.comment }}</p>
+            </div>
+            <br>
+            <p><strong>Feedback for {{ feedback.room.name }}</strong></p>
+            <p><small>{{ feedback.created_at }}</small></p>
+        </div>
+        {% empty %}
+        <p>No feedback submitted yet.</p>
+        {% endfor %}
     </div>
 
-     <!-- Footer -->
-     {% include 'footer.html' %}
+    <!-- Footer -->
+    {% include 'footer.html' %}
 </body>
 </html>
 
