@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('feedback/', include('feedback.urls', namespace='feedback')),
     path('contact/', include('contact.urls', namespace='contact')),
+    path('blog/', include('blog.urls', namespace='blog')),
 ]
 
 # Serve media files during development

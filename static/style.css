@@ -309,7 +309,7 @@ body {
   transform: scale(1.05);
 }
 
-.room-card img {
+room-card img {
   width: 100%;
   height: auto;
 }
@@ -397,9 +397,10 @@ body {
 /* General Reset */
 
 .contact-form-container {
-  width: 100%;
-  max-width: 100%;
+  width: 75%;
+  max-width: 75%;
   padding: 20px;
+  margin: 0 auto; /* Center align the container */
 }
 
 .contact-form {
@@ -424,6 +425,12 @@ body {
   font-size: 1rem;
   color: #333;
   outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  font-weight: bold;
+  color: #333;
 }
 
 .contact-form input::placeholder,
