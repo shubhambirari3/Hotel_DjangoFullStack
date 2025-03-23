@@ -1,6 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Room, RoomCategory
 from feedback.forms import FeedbackForm
+from blog.models import Blog
+
+def home(request):
+    rooms = Room.objects.all()  # Fetch first 6 rooms
+    blogs = Blog.objects.all()  # Fetch first 6 blogs
+    context = {
+        'rooms': rooms,
+        'blogs': blogs,
+    }
+    return render(request, 'index.html', context)
 
 def room_list(request):
     category_name = request.GET.get('category', 'all').lower()
