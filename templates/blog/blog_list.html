@@ -15,7 +15,7 @@
         <h1>Our Blog</h1>
         <p>Laborum accusantium libero commodi. Voluptate consequatur itaque expedita accusamus impedit perspiciatis asperiores necessitatibus assumenda magnam ipsa.</p>
         <div class="breadcrumb">
-            <span><a href="{% url 'rooms:room_list' %}">Home</a></span> > <span class="current">Blog</span>
+            <span><a href="{% url 'home' %}">Home</a></span> > <span class="current">Blog</span>
         </div> <br>
         <div  style="text-align: center; display: inline-block; background-color: #ffffff; color: #f5a623; padding: 30px 30px; border-radius: 25px; font-size: 0.9rem; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <a href="{% url 'blog:create_blog' %}" class="btn" style="color: #fcffff; text-decoration: none; font-weight: bold; ">Post a Blog</a>
@@ -47,8 +47,8 @@
             </a>
             <div class="room-details">
                 <div class="info">
-                    <span>{{ blog.author.get_full_name }}</span>
-                    <span>{{ blog.created_at|date:"F d, Y" }}</span>
+                    <span>by {{ blog.author.get_full_name }}</span>
+                    <span>on {{ blog.created_at|date:"F d, Y" }}</span>
                 </div>
                 <h3><a href="{% url 'blog:blog_detail' blog.id %}">{{ blog.title }}</a></h3>
                 <p>{{ blog.description|truncatewords:20 }}</p>

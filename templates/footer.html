@@ -16,11 +16,12 @@
         <div class="footer-menu">
             <h3 style="color: white;">Menu</h3>
             <ul>
-                <li><a href="#" style="color: white;">Home</a></li>
-                <li><a href="#" style="color: white;">About Us</a></li>
-                <li><a href="#" style="color: white;">Rooms</a></li>
-                <li><a href="#" style="color: white;">Blog</a></li>
-                <li><a href="#" style="color: white;">Contact Us</a></li>
+                <li><a href="{% url 'home' %}" style="color: white;">Home</a></li>
+                <li><a href="{% url 'rooms:room_list' %}" style="color: white;">Rooms</a></li>
+                <li><a href="{% url 'blog:blog_list' %}" style="color: white;">Blog</a></li>
+                <li><a href="{% url 'feedback:feedback_list' %}" style="color: white;">Feedback</a></li>
+                <li><a href="{% url 'about' %}" style="color: white;">About Us</a></li>
+                <li><a href="{% url 'contact:contact_us' %}" style="color: white;">Contact Us</a></li>
             </ul>
         </div>
         <div class="footer-meet">

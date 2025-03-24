@@ -279,6 +279,19 @@
       border: none;
       border-radius: 10px;
     }
+
+    .knsl-p-0-100 {
+      padding-bottom: 0px;
+    }
+
+    /* feedbacl profile img */
+    .testimonial .profile img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      /* Optional, if circular images are desired */
+    }
   </style>
 
 </head>
@@ -400,7 +413,7 @@
       </div>
     </div>
 
-    <!-- Experience Section -->
+    <!--   We have 17+ years of Experience Experience Section -->
     <div class="experience"
       style="display: flex; align-items: center; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
       <div class="experience-image" style="flex: 1;">
@@ -412,13 +425,14 @@
           Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem.
           Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
         </p>
-        <a href="#"
+        <a href="{% url 'about' %}"
           style="display: inline-block; padding: 10px 20px; background: #4a90e2; color: white; border-radius: 5px; text-decoration: none;">More
           about us</a>
       </div>
     </div>
   </section>
 
+  <!-- Start your Amazing Adventure! -->
   <section style="background-color: #f8fcfd; padding: 50px 0;">
     <!-- Start Your Amazing Adventure Section -->
     <div class="adventure-section"
@@ -447,9 +461,7 @@
         Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem.
         Laborum accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.
       </p>
-      <a href="#"
-        style="display: inline-block; padding: 10px 20px; background: #4a90e2; color: white; border-radius: 5px; text-decoration: none;">More
-        our places</a>
+      
     </div>
   </section>
 
@@ -564,52 +576,46 @@
   </section>
 
   <!-- Feedback -->
+  <!-- Feedback -->
   <section class="rooms-section">
-    <h2>Feedback from our Guests</h2>
+    <h2>Feedback from our Guests</h2> <br>
     <p>Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. Laborum
       accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.</p>
     <a href="{% url 'feedback:feedback_list' %}" class="knsl-btn knsl-btn-md"><span>All feedbacks</span></a>
   </section>
   <section class="testimonials-section">
     <div class="container">
+      {% for feedback in feedbacks %}
       <div class="testimonial">
         <div class="profile">
-          <img src="{% static 'images/faces-1-140x140.jpg' %}" alt="Oscar Newman">
-          <h3>Oscar Newman</h3>
-          <p>From Poland</p>
+          {% if feedback.user and feedback.user.profile.profile_picture %}
+          <img src="{{ feedback.user.profile.profile_picture.url }}" alt="{{ feedback.user.get_full_name }}">
+          {% else %}
+          <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile">
+          {% endif %}
+          <h3>
+            {% if feedback.user %}
+            {{ feedback.user.get_full_name }}
+            {% else %}
+            {{ feedback.name|default:"Anonymous" }}
+            {% endif %}
+          </h3>
+          <p>From {{ feedback.country|default:"Unknown" }}</p>
         </div>
         <div class="testimonial-content">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo
-            magnam voluptatem a tempora id vitae dolor.</p>
+          <div class="stars">
+            {% for i in '12345' %}
+            {% if forloop.counter <= feedback.rating %} ⭐ {% else %} ☆ {% endif %} {% endfor %} </div>
+              <p>{{ feedback.comment }}</p>
+          </div>
         </div>
+        {% empty %}
+        <p>No feedbacks available.</p>
+        {% endfor %}
       </div>
-      <div class="testimonial">
-        <div class="profile">
-          <img src="{% static 'images/faces-2-140x140.jpg' %}" alt="Emma Trueman">
-          <h3>Emma Trueman</h3>
-          <p>From Poland</p>
-        </div>
-        <div class="testimonial-content">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo
-            magnam voluptatem a tempora id vitae dolor.</p>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="profile">
-          <img src="{% static 'images/faces-3-scaled-1-140x140.jpg' %}" alt="Viktoria Freeman">
-          <h3>Viktoria Freeman</h3>
-          <p>From Ukraine</p>
-        </div>
-        <div class="testimonial-content">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>Dequi folores dolor sit amet, consectetur adipisicing elit. Nesciunt illo, delectus totam! Delectus illo
-            magnam voluptatem a tempora id vitae dolor.</p>
-        </div>
-      </div>
-    </div>
   </section>
+
+
 
   <!-- Our Blogs (Dynamic with Swiper Carousel) -->
   <section

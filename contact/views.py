@@ -26,3 +26,5 @@ def contact_us(request):
         form = ContactForm(user=request.user)
 
     return render(request, 'contact/contact.html', {'form': form})
+
+

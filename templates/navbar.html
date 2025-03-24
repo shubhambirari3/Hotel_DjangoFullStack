@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <nav style="position: fixed; top: 0px; left: 10px; display: flex; justify-content: space-between; align-items: center; padding: 0px 30px; background-color: white; z-index: 99; width: 100%; height: 80px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 30px 30px 30px 30px;">
-    <div style="font-size: 24px; font-weight: bold; color: #1a1a2e;">Kinsley</div>
+    <a href="{% url 'home' %}" style="text-decoration: none; font-size: 24px; font-weight: bold; color: #1a1a2e;">Kinsley</a>
     
     <!-- Hamburger Icon -->
     <button style="display: none; font-size: 24px; background: none; border: none; cursor: pointer; color: #333;" class="hamburger" aria-label="Toggle menu">
@@ -16,7 +16,7 @@
         <a href="{% url 'blog:blog_list' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Blog</a>
         <a href="#" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Shop</a>
         <a href="{% url 'feedback:feedback_list' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Feedback</a>
-        <a href="#" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">About</a>
+        <a href="{% url 'about' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">About</a>
         <a href="{% url 'contact:contact_us' %}" style="text-decoration: none; color: #333; font-size: 16px; font-weight: 600; transition: color 0.3s ease;">Contact</a>
     </div>
 
