@@ -214,11 +214,7 @@
     }
 
 
-    input[type="date"]:not(:focus):before {
-      content: "Select Date";
-      color: #666;
-      font-size: 14px;
-    }
+
 
     input[type="date"]:focus:before {
       content: "";
@@ -232,7 +228,7 @@
 
     .search-form input:focus,
     .search-form select:focus {
-      border-color: #4a90e2;
+      border-color: #207feb;
       background: rgba(255, 255, 255, 0.8);
     }
 
@@ -241,16 +237,7 @@
     }
 
 
-    /* Hide default date placeholder entirely */
-    input[type="date"]::-webkit-datetime-edit-text,
-    input[type="date"]::-webkit-datetime-edit-month-field,
-    input[type="date"]::-webkit-datetime-edit-day-field,
-    input[type="date"]::-webkit-datetime-edit-year-field {
-      color: transparent;
-      /* Hides "dd-mm-yyyy" */
-      opacity: 0;
-      /* Ensures no faint text remains */
-    }
+
 
     /* Ensure the input looks empty until a date is selected */
     input[type="date"] {
@@ -286,6 +273,12 @@
     .search-form label[for="Search"]:hover {
       background: #357abd;
     }
+
+    .select2-container--default .select2-selection--single {
+      background-color: #ffffff0a;
+      border: none;
+      border-radius: 10px;
+    }
   </style>
 
 </head>
@@ -317,7 +310,7 @@
         font-weight: 500;
         padding: 10px 15px;
         background: transparent;
-        backdrop-filter: blur(12px);">
+        backdrop-filter: blur(100%);">
           Check-in
         </label>
         <input type="date" id="Check-in Date" style="
@@ -335,39 +328,39 @@
         font-weight: 500;
         padding: 10px 15px;
         background: transparent;
-        backdrop-filter: blur(12px);">
+        backdrop-filter: blur(100%);">
           Check-out
         </label>
         <input type="date" id="Check-out Date" style="
         padding: 10px 15px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.584);
         outline: none;
         transition: border-color 0.3s ease;
         color: #333;
         height: 40px;">
         <select style="
         padding: 10px 15px;
+        background-color: transparent;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.743);
         outline: none;
         transition: border-color 0.3s ease;
         height: 40px;">
-            <option value="1">1 Adult</option>
-            <option value="2">2 Adults</option>
-            <option value="3">3 Adults</option>
-            <option value="4">4 Adults</option>
-            <option value="5">5 Adults</option>
-            <option value="6">6 Adults</option>
-            <option value="7">7 Adults</option>
-            <option value="8">8 Adults</option>
-            <option value="9">9 Adults</option>
-            <option value="10">10 Adults</option>
+          <option value="1">1 Adult</option>
+          <option value="2">2 Adults</option>
+          <option value="3">3 Adults</option>
+          <option value="4">4 Adults</option>
+          <option value="5">5 Adults</option>
+          <option value="6">6 Adults</option>
+          <option value="7">7 Adults</option>
+          <option value="8">8 Adults</option>
+          <option value="9">9 Adults</option>
+          <option value="10">10 Adults</option>
         </select>
         <label for="Search" style="
-        background: #4a90e2;
+        background: #1e7de9;
         padding: 10px 15px;
         border-radius: 8px;
         cursor: pointer;
@@ -575,6 +568,7 @@
     <h2>Feedback from our Guests</h2>
     <p>Consectetur adipisicing elit. Nihil, illum voluptate eveniet ex fugit ea delectus, sed voluptatem. Laborum
       accusantium libero commodi id officiis itaque esse adipisci, necessitatibus asperiores, illo odio.</p>
+    <a href="{% url 'feedback:feedback_list' %}" class="knsl-btn knsl-btn-md"><span>All feedbacks</span></a>
   </section>
   <section class="testimonials-section">
     <div class="container">
