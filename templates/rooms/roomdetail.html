@@ -184,7 +184,7 @@
                                                                         <span>{{ room.name }}</span>
                                                                     </h1>
                                                                     <ul class="knsl-breadcrumbs">
-                                                                        <li><a href="#">Home</a></li>
+                                                                        <li><a href="{% url 'home' %}">Home</a></li>
                                                                         <li><a
                                                                                 href="{% url 'rooms:room_list' %}">Rooms</a>
                                                                         </li>
@@ -813,6 +813,36 @@
                                             </div>
                                         </section>
                                         <!-- price section end -->
+
+                                         <!-- roomcapacity Section -->
+                                         <section
+                                         class="elementor-section elementor-inner-section elementor-element elementor-element-42382cc elementor-section-full_width elementor-section-height-default elementor-section-height-default"
+                                         data-id="42382cc" data-element_type="section">
+                                         <div class="elementor-container elementor-column-gap-no">
+                                             <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-5e73cb5"
+                                                 data-id="5e73cb5" data-element_type="column">
+                                                 <div class="elementor-widget-wrap elementor-element-populated">
+                                                     <div class="elementor-element elementor-element-65f23fc elementor-widget elementor-widget-kinsley-room-price"
+                                                         data-id="65f23fc" data-element_type="widget"
+                                                         data-widget_type="kinsley-room-price.default">
+                                                         <div class="elementor-widget-container">
+                                                             <div class="knsl-price-card knsl-mb-20">
+                                                                 <div class="knsl-price-number">
+                                                                     <p class="mphb-regular-price"><strong>Room for:</strong> 
+                                                                         <span class="mphb-price">
+                                                                             <span class="mphb-currency"></span>{{ room.capacity }}
+                                                                         </span> 
+                                                                         <span class="mphb-price-period" title="Choose dates to see relevant prices">Adults </span>
+                                                                     </p>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                        </section>
+                                     <!-- roomcapacity section end -->
 
                                         <!-- date booking form section start -->
                                         <section
