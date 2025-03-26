@@ -281,26 +281,25 @@
                                                                 </tr>
                                                                 <tr class="mphb-price-breakdown-adults">
                                                                     <td colspan="1"> Adults</td>
-                                                                    <td> adults{{ room.capacity }}</td>
+                                                                    <td> {{ adults seected }}</td> <!-- adults selected for while reservation make this dynamic -->
                                                                 </tr>
                                                                 <tr class="mphb-price-breakdown-nights">
                                                                     <td colspan="1">Nights</td>
                                                                     <td>example 3 (number of dates between check-in to
-                                                                        check-out) </td> <!--make this dynamic -->
+                                                                        check-out) </td>  <!--show this values dynamic -->
                                                                 </tr>
                                                                 <tr class="mphb-price-breakdown-dates">
                                                                     <th colspan="1">Dates</th>
                                                                     <th class="mphb-table-price-column">Amount</th>
                                                                 </tr>
                                                                 <tr class="mphb-price-breakdown-date">
-                                                                    <td colspan="1"> checkin date - checkout </td>
-                                                                    <!--make this dynamic -->
+                                                                    <td colspan="1"> checkin date - checkout date </td> <!--show this dates  dynamic -->
                                                                     <td class="mphb-table-price-column"> <span
                                                                             class="mphb-price"><span
                                                                                 class="mphb-currency">₹</span>{{
                                                                             room.price }} × (numbers of dates between
                                                                             check-in to check-out) </span>
-                                                                        <!--make this dynamic -->
+                                                                        <!--show this values dynamic -->
                                                                     </td>
                                                                 </tr>
                                                                 <tr class="mphb-price-breakdown-subtotal">
@@ -316,7 +315,7 @@
                                                                     <th colspan="1">Total GST</th>
                                                                     <th class="mphb-table-price-column"> <span
                                                                             class="mphb-price"><span
-                                                                                class="mphb-currency">₹</span> 18 % gst
+                                                                                class="mphb-currency">₹</span> 18% gst
                                                                             of subtotal </span>
                                                                     </th>
                                                                 </tr>

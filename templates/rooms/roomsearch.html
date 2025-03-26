@@ -217,9 +217,40 @@
                                     data-widget_type="kinsley-mphb-search-results.default">
                                     <div class="elementor-widget-container">
                                         <div class="">
-                                            <div
-                                                class="mphb_sc_search_results-wrapper  attr-details-amenity-false attr-details-category-false attr-details-attributes-false attr-details-view-false attr-details-bed-type-false attr-details-children-false">
-                                                <p class="mphb_sc_search_results-info"> {available rooms} accommodations found from
+                                            <div class="mphb_sc_search_results-wrapper  attr-details-amenity-false attr-details-category-false attr-details-attributes-false attr-details-view-false attr-details-bed-type-false attr-details-children-false">
+                                                
+                                                  <!-- reserve room that you select to booking  section starts -->
+                                                  <div
+                                                  class="mphb-room-type post-1943 mphb_room_type type-mphb_room_type status-publish has-post-thumbnail mphb_room_type_category-economy mphb_room_type_tag-city mphb_room_type_tag-economy mphb_room_type_facility-4-private-pools mphb_room_type_facility-air-conditioning mphb_room_type_facility-airport-transfer mphb_room_type_facility-all-inclusive mphb_room_type_facility-wifi mphb_room_type_facility-laundry mphb_room_type_facility-smart-tv mphb_room_type_facility-under-protection mphb-room-type-adults-2 mphb-room-type-children-1 ">
+                                                  <p class="post-thumbnail mphb-loop-room-thumbnail"> 
+                                                      <a href="{% url 'rooms:room_detail' room.id %}">
+                                                          {% if room.image %}
+                                                              <img src="{{ room.image.url }}" alt="{{ room.name }}">
+                                                          {% else %}
+                                                              <img src="{% static 'images/placeholder.jpg' %}" alt="No image available">     
+                                                          {% endif %}
+                                                      </a>
+                                                      
+                                                  </p>
+                                                  <h2 class="mphb-room-type-title entry-title"> <a
+                                                          class="mphb-room-type-title"
+                                                          href="#">{{ room.name }}</a></h2>
+                                                  <div class="knsl-text-light knsl-text-sm knsl-mb-20">
+                                                      <p>{{ room.description }}</p>
+                                                  </div>
+                                                  
+                                                  <p class="mphb-view-details-button-wrapper"> <a
+                                                          class="button mphb-view-details-button"
+                                                          href="#">View
+                                                          Details</a>
+                                                    </p>
+                                                          
+                                                  
+                                            </div>
+                                               
+                                             <!-- reserve room section end -->
+                                              
+                                             <p class="mphb_sc_search_results-info"> {available rooms} accommodations found from
                                                     {check-in}- {check-out}</p>
                                                 <h2 class="mphb-recommendation-title"> Recommended for {{ room.capacity }} adult</h2>
                                                 <form action="https://kinsley.bslthemes.com/booking-confirmation/"
@@ -239,14 +270,15 @@
                                                                             class="mphb-currency">₹</span>{{ room.price }}</span>
                                                                 </span> <span class="mphb-recommendation-item-count">1 ×
                                                                 </span> <a
-                                                                    href="https://kinsley.bslthemes.com/accommodation/deluxe-room/"
+                                                                    href="" 
                                                                     class="mphb-recommendation-item-link"
                                                                     target="_blank"> {{ room.name }} </a> <small
                                                                     class="mphb-recommendation-item-guests"> <span
                                                                         class="mphb-recommendation-item-guests-label">
                                                                         Max occupancy: </span> <span
                                                                         class="mphb-recommendation-item-adults mphb-adults-4">
-                                                                        {{ room.capacity }} adults </span> </small></div>
+                                                                        {{ room.capacity }} adults </span> </small>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                     <p class="mphb-recommendation-total"> <span
@@ -259,7 +291,7 @@
                                                         Reserve </button>
                                                     <div class="mphb-clear"></div>
                                                 </form>
-                                                <form action="https://kinsley.bslthemes.com/booking-confirmation/"
+                                                <form action="#"
                                                     method="POST" id="mphb-reservation-cart"
                                                     class="mphb-reservation-cart mphb-empty-cart"> <input type="hidden"
                                                         name="mphb_check_in_date" value="2025-03-25"> <input
@@ -269,13 +301,13 @@
                                                         type="hidden" name="_wp_http_referer"
                                                         value="/search-results/?mphb_check_in_date=2025-03-25&amp;mphb_check_out_date=2025-03-26&amp;mphb_adults=1&amp;mphb_children=0">
                                                     <div class="mphb-reservation-details">
-                                                        <p class="mphb-empty-cart-message">Select from available
-                                                            Rooms.</p>
+                                                        <p class="mphb-empty-cart-message"><strong>Select from available
+                                                            Rooms.</strong></p>
                                                         <p class="mphb-cart-message"></p>
                                                         
                                                     </div> 
                                                 </form>
-                                                <!-- available room section starts -->
+                                                <!-- others available  rooms section starts -->
                                                 <div
                                                     class="mphb-room-type post-1943 mphb_room_type type-mphb_room_type status-publish has-post-thumbnail mphb_room_type_category-economy mphb_room_type_tag-city mphb_room_type_tag-economy mphb_room_type_facility-4-private-pools mphb_room_type_facility-air-conditioning mphb_room_type_facility-airport-transfer mphb_room_type_facility-all-inclusive mphb_room_type_facility-wifi mphb_room_type_facility-laundry mphb_room_type_facility-smart-tv mphb_room_type_facility-under-protection mphb-room-type-adults-2 mphb-room-type-children-1 ">
                                                     <p class="post-thumbnail mphb-loop-room-thumbnail"> 
@@ -311,7 +343,7 @@
                                                         
                                                     </div>
                                                 </div>
-                                                 <!-- available room section end -->
+                                                 <!--others available  rooms section end -->
                                                 
                                                
                                             
