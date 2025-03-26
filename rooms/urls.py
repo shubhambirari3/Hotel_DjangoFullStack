@@ -7,6 +7,6 @@ app_name = 'rooms'
 urlpatterns = [
     path('rooms/', views.room_list, name='room_list'),
     path('rooms/<int:room_id>/', views.room_detail, name='room_detail'),
-    path('roomsearch/', views.room_search , name='roomsearch'),
-    path('roombooking/', views.room_booking , name='roombooking'),
+    path('roomsearch/', views.room_search , name='room_search'),
+    path('roombooking/', views.room_booking , name='room_booking'),
 ]

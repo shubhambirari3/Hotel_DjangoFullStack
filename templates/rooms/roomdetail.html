@@ -29,7 +29,7 @@
         }
     </style>
 
-    
+
 
     <style id='classic-theme-styles-inline-css' type='text/css'>
         /*! This file is auto-generated */
@@ -146,16 +146,17 @@
     <meta name="msapplication-TileImage"
         content="https://kinsley.bslthemes.com/wp-content/uploads/2021/11/cropped-logo-270x270.png" />
 
-    
+
 </head>
 
-<body class="mphb_room_type-template mphb_room_type-template-template-layout-builder mphb_room_type-template-template-layout-builder-php single single-mphb_room_type postid-17 theme-kinsley woocommerce-no-js elementor-default elementor-kit-5762 elementor-page elementor-page-17">
+<body
+    class="mphb_room_type-template mphb_room_type-template-template-layout-builder mphb_room_type-template-template-layout-builder-php single single-mphb_room_type postid-17 theme-kinsley woocommerce-no-js elementor-default elementor-kit-5762 elementor-page elementor-page-17">
 
     {% include 'navbar.html' %}
     <!-- page wrapper -->
-    <div class="knsl-app"> 
-       
-        
+    <div class="knsl-app">
+
+
         <!-- top navbar end -->
         <div id="container">
             <div id="content" role="main">
@@ -607,12 +608,12 @@
 
 
 
-                                        
+
                                         <!-- Room Feedback START -->
                                         <section class="rooms-section">
                                             <h2>Submit Your Feedback</h2>
                                             <p class="feedback-quote">"Your feedback helps us improve!"</p>
-                                
+
                                             <style>
                                                 .container2 {
                                                     max-width: 1000px;
@@ -715,7 +716,7 @@
 
                                             <div class="container2">
                                                 <div class="feedback-header">
-                                                    
+
                                                 </div>
 
                                                 <form method="POST"
@@ -727,7 +728,8 @@
                                                         <label for="id_name">Name:</label>
                                                         {% if request.user.is_authenticated %}
                                                         <input type="text" id="id_name"
-                                                            value="{{ request.user.get_full_name }}" readonly placeholder="Enter your name">
+                                                            value="{{ request.user.get_full_name }}" readonly
+                                                            placeholder="Enter your name">
                                                         {% else %}
                                                         {{ feedback_form.name }}
                                                         {% endif %}
@@ -743,7 +745,8 @@
                                                         <label for="id_email">Email:</label>
                                                         {% if request.user.is_authenticated %}
                                                         <input type="email" id="id_email"
-                                                            value="{{ request.user.email }}" readonly placeholder="Enter your email">
+                                                            value="{{ request.user.email }}" readonly
+                                                            placeholder="Enter your email">
                                                         {% else %}
                                                         {{ feedback_form.email }}
                                                         {% endif %}
@@ -759,8 +762,10 @@
                                                         <label>Rating:</label>
                                                         <div class="stars">
                                                             {% for choice in feedback_form.rating.field.choices %}
-                                                            <input type="radio" id="star{{ choice.0 }}" name="rating" value="{{ choice.0 }}"
-                                                            {% if feedback_form.rating.value == choice.0 %}checked{% endif %}>
+                                                            <input type="radio" id="star{{ choice.0 }}" name="rating"
+                                                                value="{{ choice.0 }}" {% if
+                                                                feedback_form.rating.value==choice.0 %}checked{% endif
+                                                                %}>
                                                             <label for="star{{ choice.0 }}">⭐</label>
                                                             {% endfor %}
                                                         </div>
@@ -771,7 +776,7 @@
                                             </div>
                                         </section>
                                         <!-- Room Feedback END -->
-                                       
+
 
 
 
@@ -798,11 +803,14 @@
                                                             <div class="elementor-widget-container">
                                                                 <div class="knsl-price-card knsl-mb-20">
                                                                     <div class="knsl-price-number">
-                                                                        <p class="mphb-regular-price"><strong>Prices start at:</strong> 
+                                                                        <p class="mphb-regular-price"><strong>Prices
+                                                                                start at:</strong>
                                                                             <span class="mphb-price">
                                                                                 <span class="mphb-currency">₹</span>{{ room.price }}
-                                                                            </span> 
-                                                                            <span class="mphb-price-period" title="Choose dates to see relevant prices">per night</span>
+                                                                            </span>
+                                                                            <span class="mphb-price-period"
+                                                                                title="Choose dates to see relevant prices">per
+                                                                                night</span>
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -814,37 +822,40 @@
                                         </section>
                                         <!-- price section end -->
 
-                                         <!-- roomcapacity Section -->
-                                         <section
-                                         class="elementor-section elementor-inner-section elementor-element elementor-element-42382cc elementor-section-full_width elementor-section-height-default elementor-section-height-default"
-                                         data-id="42382cc" data-element_type="section">
-                                         <div class="elementor-container elementor-column-gap-no">
-                                             <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-5e73cb5"
-                                                 data-id="5e73cb5" data-element_type="column">
-                                                 <div class="elementor-widget-wrap elementor-element-populated">
-                                                     <div class="elementor-element elementor-element-65f23fc elementor-widget elementor-widget-kinsley-room-price"
-                                                         data-id="65f23fc" data-element_type="widget"
-                                                         data-widget_type="kinsley-room-price.default">
-                                                         <div class="elementor-widget-container">
-                                                             <div class="knsl-price-card knsl-mb-20">
-                                                                 <div class="knsl-price-number">
-                                                                     <p class="mphb-regular-price"><strong>Room for:</strong> 
-                                                                         <span class="mphb-price">
-                                                                             <span class="mphb-currency"></span>{{ room.capacity }}
-                                                                         </span> 
-                                                                         <span class="mphb-price-period" title="Choose dates to see relevant prices">Adults </span>
-                                                                     </p>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
+                                        <!-- roomcapacity Section -->
+                                        <section
+                                            class="elementor-section elementor-inner-section elementor-element elementor-element-42382cc elementor-section-full_width elementor-section-height-default elementor-section-height-default"
+                                            data-id="42382cc" data-element_type="section">
+                                            <div class="elementor-container elementor-column-gap-no">
+                                                <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-5e73cb5"
+                                                    data-id="5e73cb5" data-element_type="column">
+                                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                                        <div class="elementor-element elementor-element-65f23fc elementor-widget elementor-widget-kinsley-room-price"
+                                                            data-id="65f23fc" data-element_type="widget"
+                                                            data-widget_type="kinsley-room-price.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div class="knsl-price-card knsl-mb-20">
+                                                                    <div class="knsl-price-number">
+                                                                        <p class="mphb-regular-price"><strong>Room
+                                                                                for:</strong>
+                                                                            <span class="mphb-price">
+                                                                                <span class="mphb-currency"></span>{{ room.capacity }}
+                                                                            </span>
+                                                                            <span class="mphb-price-period"
+                                                                                title="Choose dates to see relevant prices">Adults
+                                                                            </span>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </section>
-                                     <!-- roomcapacity section end -->
+                                        <!-- roomcapacity section end -->
 
-                                        <!-- date booking form section start -->
+                                        <!-- Date Booking Form Section Start -->
                                         <section
                                             class="elementor-section elementor-inner-section elementor-element elementor-element-444269d elementor-section-full_width elementor-section-height-default elementor-section-height-default"
                                             data-id="444269d" data-element_type="section">
@@ -859,69 +870,56 @@
                                                                 <div class="knsl-sticky knsl-stycky-right"
                                                                     data-margin-top="100">
                                                                     <div
-                                                                        class="mphb_sc_search-wrapper  knsl-book-form knsl-book-form-v">
+                                                                        class="mphb_sc_search-wrapper knsl-book-form knsl-book-form-v">
+                                                                        <h3>Check Availability</h3> <br>
+                                                                        {% if messages %}
+                                                                        <ul class="messages">
+                                                                            {% for message in messages %}
+                                                                            <li{% if message.tags %}
+                                                                                class="{{ message.tags }}" {% endif %}>
+                                                                                {{ message }}</li>
+                                                                                {% endfor %}
+                                                                        </ul>
+                                                                        {% endif %}
                                                                         <form method="GET" class="mphb_sc_search-form"
-                                                                            action="#">
-                                                                            <!-- linking dynamic date booking form  -->
-                                                                            <p class="mphb-required-fields-tip"> <small>
-                                                                                    Required fields are followed by
-                                                                                    <abbr title="required">*</abbr>
-                                                                                </small></p>
+                                                                            action="{% url 'rooms:room_search' %}">
+                                                                            <input type="hidden" name="room_id"
+                                                                                value="{{ room.id }}">
                                                                             <p class="mphb_sc_search-check-in-date">
-                                                                                <label
-                                                                                    for="mphb_check_in_date-mphb-search-form-67c81e94a26c1">
-                                                                                    Check-in <abbr
-                                                                                        title="Formatted as dd/mm/yyyy">*</abbr>
-                                                                                </label> <br /> <input
-                                                                                    id="mphb_check_in_date-mphb-search-form-67c81e94a26c1"
-                                                                                    data-datepick-group="mphb-search-form-67c81e94a26c1"
-                                                                                    value="" placeholder="Check-in Date"
-                                                                                    required="required" type="text"
-                                                                                    name="mphb_check_in_date"
+                                                                                <label for="check_in">Check-in <abbr
+                                                                                        title="Formatted as yyyy-mm-dd">*</abbr></label>
+                                                                                <br />
+                                                                                <input id="check_in" value=""
+                                                                                    placeholder="Check-in Date"
+                                                                                    required="required" type="date"
+                                                                                    name="check_in"
                                                                                     class="mphb-datepick"
                                                                                     autocomplete="off"
                                                                                     inputmode="none" />
                                                                             </p>
                                                                             <p class="mphb_sc_search-check-out-date">
-                                                                                <label
-                                                                                    for="mphb_check_out_date-mphb-search-form-67c81e94a26c1">
-                                                                                    Check-out <abbr
-                                                                                        title="Formatted as dd/mm/yyyy">*</abbr>
-                                                                                </label> <br /> <input
-                                                                                    id="mphb_check_out_date-mphb-search-form-67c81e94a26c1"
-                                                                                    data-datepick-group="mphb-search-form-67c81e94a26c1"
-                                                                                    value=""
+                                                                                <label for="check_out">Check-out <abbr
+                                                                                        title="Formatted as yyyy-mm-dd">*</abbr></label>
+                                                                                <br />
+                                                                                <input id="check_out" value=""
                                                                                     placeholder="Check-out Date"
-                                                                                    required="required" type="text"
-                                                                                    name="mphb_check_out_date"
+                                                                                    required="required" type="date"
+                                                                                    name="check_out"
                                                                                     class="mphb-datepick"
                                                                                     autocomplete="off"
                                                                                     inputmode="none" />
                                                                             </p>
-                                                                            <p class="mphb_sc_search-adults"> <label
-                                                                                    for="mphb_adults-mphb-search-form-67c81e94a26c1">
-                                                                                    Adults </label> <br /> <select
-                                                                                    id="mphb_adults-mphb-search-form-67c81e94a26c1"
-                                                                                    name="mphb_adults">
-                                                                                    <option value="1"
-                                                                                        selected='selected'>1</option>
-                                                                                    <option value="2">2</option>
-                                                                                    <option value="3">3</option>
-                                                                                    <option value="4">4</option>
-                                                                                    <option value="5">5</option>
-                                                                                    <option value="6">6</option>
-
-
+                                                                            <p class="mphb_sc_search-adults">
+                                                                                <label for="adults">Adults</label>
+                                                                                <br />
+                                                                                <select id="adults" name="adults"
+                                                                                    required>
+                                                                                    {% for i in "123456" %}
+                                                                                    <option value="{{ i }}">{{ i }}
+                                                                                        Adult{{ i|pluralize }}</option>
+                                                                                    {% endfor %}
                                                                                 </select>
                                                                             </p>
-                                                                            <input
-                                                                                id="mphb_check_in_date-mphb-search-form-67c81e94a26c1-hidden"
-                                                                                value="" type="hidden"
-                                                                                name="mphb_check_in_date" />
-                                                                            <input
-                                                                                id="mphb_check_out_date-mphb-search-form-67c81e94a26c1-hidden"
-                                                                                value="" type="hidden"
-                                                                                name="mphb_check_out_date" />
                                                                             <p
                                                                                 class="mphb_sc_search-submit-button-wrapper">
                                                                                 <button type="submit"
@@ -936,7 +934,7 @@
                                                 </div>
                                             </div>
                                         </section>
-                                        <!-- date booking form section end -->
+                                        <!-- Date Booking Form Section End -->
 
 
                                     </div>
@@ -1052,23 +1050,7 @@
 
 
 
-    <script>const lazyloadRunObserver = () => {
-            const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`); const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        let lazyloadBackground = entry.target; if (lazyloadBackground) { lazyloadBackground.classList.add('e-lazyloaded'); }
-                        lazyloadBackgroundObserver.unobserve(entry.target);
-                    }
-                });
-            }, { rootMargin: '200px 0px 200px 0px' }); lazyloadBackgrounds.forEach((lazyloadBackground) => { lazyloadBackgroundObserver.observe(lazyloadBackground); });
-        }; const events = ['DOMContentLoaded', 'elementor/lazyload/observe',]; events.forEach((event) => { document.addEventListener(event, lazyloadRunObserver); });</script>
-    <noscript>
-        <style>
-            .lazyload {
-                display: none
-            }
-        </style>
-    </noscript>
+   
     <script
         data-noptimize="1">window.lazySizesConfig = window.lazySizesConfig || {}; window.lazySizesConfig.loadMode = 1;</script>
     <script async data-noptimize="1"
@@ -1100,7 +1082,7 @@
         src="https://kinsley.bslthemes.com/wp-content/cache/autoptimize/1/js/autoptimize_a4efdf3a96bcd12fd7ea34651140649e.js"></script>
 
 
-        
+
 </body>
 
 </html>

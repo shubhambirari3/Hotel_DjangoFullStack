@@ -142,9 +142,9 @@
         content="https://kinsley.bslthemes.com/wp-content/uploads/2021/11/cropped-logo-270x270.png">
 </head>
 
-<body
-    class="page-template page-template-template-layout-builder page-template-template-layout-builder-php page page-id-8 theme-kinsley woocommerce-js elementor-default elementor-kit-5762 elementor-page elementor-page-8 e--ua-blink e--ua-edge e--ua-webkit"
-    data-elementor-device-mode="desktop"> <!-- page wrapper -->
+<body  class="page-template page-template-template-layout-builder page-template-template-layout-builder-php page page-id-8 theme-kinsley woocommerce-js elementor-default elementor-kit-5762 elementor-page elementor-page-8 e--ua-blink e--ua-edge e--ua-webkit"
+    data-elementor-device-mode="desktop"> 
+    {% include 'navbar.html' %}
     <div class="knsl-app">
 
         <div id="post-8" class="post-8 page type-page status-publish hentry">
@@ -183,9 +183,7 @@
                                                             <h1 class="knsl-title--h knsl-mb-20 knsl-h1-inner"> <span>
                                                                     Search Results </span></h1>
                                                             <ul class="knsl-breadcrumbs">
-                                                                <li><a href="https://kinsley.bslthemes.com"
-                                                                        title="Kinsley - Hotel &amp; Resort WordPress Theme">Home</a>
-                                                                </li>
+                                                                <li><a href="{% url 'home' %}">Home</a></li>
                                                                 <li class="tst-active"><a>Search Results</a></li>
                                                             </ul>
                                                         </div>
@@ -217,137 +215,157 @@
                                     data-widget_type="kinsley-mphb-search-results.default">
                                     <div class="elementor-widget-container">
                                         <div class="">
-                                            <div class="mphb_sc_search_results-wrapper  attr-details-amenity-false attr-details-category-false attr-details-attributes-false attr-details-view-false attr-details-bed-type-false attr-details-children-false">
-                                                
-                                                  <!-- reserve room that you select to booking  section starts -->
-                                                  <div
-                                                  class="mphb-room-type post-1943 mphb_room_type type-mphb_room_type status-publish has-post-thumbnail mphb_room_type_category-economy mphb_room_type_tag-city mphb_room_type_tag-economy mphb_room_type_facility-4-private-pools mphb_room_type_facility-air-conditioning mphb_room_type_facility-airport-transfer mphb_room_type_facility-all-inclusive mphb_room_type_facility-wifi mphb_room_type_facility-laundry mphb_room_type_facility-smart-tv mphb_room_type_facility-under-protection mphb-room-type-adults-2 mphb-room-type-children-1 ">
-                                                  <p class="post-thumbnail mphb-loop-room-thumbnail"> 
-                                                      <a href="{% url 'rooms:room_detail' room.id %}">
-                                                          {% if room.image %}
-                                                              <img src="{{ room.image.url }}" alt="{{ room.name }}">
-                                                          {% else %}
-                                                              <img src="{% static 'images/placeholder.jpg' %}" alt="No image available">     
-                                                          {% endif %}
-                                                      </a>
-                                                      
-                                                  </p>
-                                                  <h2 class="mphb-room-type-title entry-title"> <a
-                                                          class="mphb-room-type-title"
-                                                          href="#">{{ room.name }}</a></h2>
-                                                  <div class="knsl-text-light knsl-text-sm knsl-mb-20">
-                                                      <p>{{ room.description }}</p>
-                                                  </div>
-                                                  
-                                                  <p class="mphb-view-details-button-wrapper"> <a
-                                                          class="button mphb-view-details-button"
-                                                          href="#">View
-                                                          Details</a>
+                                            <div
+                                                class="mphb_sc_search_results-wrapper  attr-details-amenity-false attr-details-category-false attr-details-attributes-false attr-details-view-false attr-details-bed-type-false attr-details-children-false">
+                                                <p class="mphb_sc_search_results-info" style="font-size: 1.5 em;"></p>
+                                                    <strong style="color: black;">{{ other_available_rooms.count }}</strong> 
+                                                    Available Rooms found from 
+                                                    <strong style="color: black;">{{ check_in }}</strong> - 
+                                                    <strong style="color: black;">{{ check_out }}</strong>
+                                                </p>
+                                                <h2 class="mphb-recommendation-title">This Room Recommended for {{ adults }} adult{{ adults|pluralize }}</h2>
+
+                                                <!-- reserve room that you select to booking section starts -->
+                                                <div
+                                                    class="mphb-room-type post-1943 mphb_room_type type-mphb_room_type status-publish has-post-thumbnail mphb_room_type_category-economy mphb_room_type_tag-city mphb_room_type_tag-economy mphb_room_type_facility-4-private-pools mphb_room_type_facility-air-conditioning mphb_room_type_facility-airport-transfer mphb_room_type_facility-all-inclusive mphb_room_type_facility-wifi mphb_room_type_facility-laundry mphb_room_type_facility-smart-tv mphb_room_type_facility-under-protection mphb-room-type-adults-2 mphb-room-type-children-1 ">
+                                                    <p class="post-thumbnail mphb-loop-room-thumbnail">
+                                                        <a href="{% url 'rooms:room_detail' selected_room.id %}">
+                                                            {% if selected_room.image %}
+                                                            <img src="{{ selected_room.image.url }}"
+                                                                alt="{{ selected_room.name }}">
+                                                            {% else %}
+                                                            <img src="{% static 'images/placeholder.jpg' %}"
+                                                                alt="No image available">
+                                                            {% endif %}
+                                                        </a>
                                                     </p>
-                                                          
-                                                  
-                                            </div>
-                                               
-                                             <!-- reserve room section end -->
-                                              
-                                             <p class="mphb_sc_search_results-info"> {available rooms} accommodations found from
-                                                    {check-in}- {check-out}</p>
-                                                <h2 class="mphb-recommendation-title"> Recommended for {{ room.capacity }} adult</h2>
-                                                <form action="https://kinsley.bslthemes.com/booking-confirmation/"
-                                                    method="POST" id="mphb-recommendation" class="mphb-recommendation">
+                                                    <h2 class="mphb-room-type-title entry-title">
+                                                        <a class="mphb-room-type-title" href="#">{{ selected_room.name }}</a>
+                                                    </h2>
+                                                    <div class="knsl-text-light knsl-text-sm knsl-mb-20">
+                                                        <p>{{ selected_room.description }}</p>
+                                                    </div>
+                                                    <p class="mphb-view-details-button-wrapper">
+                                                        <a class="button mphb-view-details-button"
+                                                            href="{% url 'rooms:room_detail' selected_room.id %}">View
+                                                            Details</a>
+                                                    </p>
+                                                </div>
+                                                <!-- reserve room section end -->
+                                                     
+                                                <form action="#" method="POST"
+                                                    id="mphb-recommendation" class="mphb-recommendation">
+                                                    {% csrf_token %}
                                                     <input type="hidden" id="mphb-checkout-recommendation-nonce"
-                                                        name="mphb-checkout-recommendation-nonce"
-                                                        value="81e3beccd4"><input type="hidden" name="_wp_http_referer"
-                                                        value="/search-results/?mphb_check_in_date=2025-03-25&amp;mphb_check_out_date=2025-03-26&amp;mphb_adults=1&amp;mphb_children=0">
-                                                    <input type="hidden" name="mphb_check_in_date" value="2025-03-25">
-                                                    <input type="hidden" name="mphb_check_out_date" value="2025-03-26">
+                                                        name="mphb-checkout-recommendation-nonce" value="81e3beccd4">
+                                                    <input type="hidden" name="_wp_http_referer"
+                                                        value="/search-results/?mphb_check_in_date={{ check_in }}&mphb_check_out_date={{ check_out }}&mphb_adults={{ adults }}&mphb_children=0">
+                                                    <input type="hidden" name="mphb_check_in_date"
+                                                        value="{{ check_in }}">
+                                                    <input type="hidden" name="mphb_check_out_date"
+                                                        value="{{ check_out }}">
                                                     <ul class="mphb-recommendation-details-list">
-                                                        <li> <input name="mphb_rooms_details[17]" type="hidden"
-                                                                value="1">
-                                                            <div class="mphb-recommendation-item"> <span
-                                                                    class="mphb-recommedation-item-subtotal"> <span
-                                                                        class="mphb-price"><span
-                                                                            class="mphb-currency">₹</span>{{ room.price }}</span>
-                                                                </span> <span class="mphb-recommendation-item-count">1 ×
-                                                                </span> <a
-                                                                    href="" 
+                                                        <li>
+                                                            <input name="mphb_rooms_details[{{ selected_room.id }}]"
+                                                                type="hidden" value="1">
+                                                            <div class="mphb-recommendation-item">
+                                                                <span class="mphb-recommedation-item-subtotal">
+                                                                    <span class="mphb-price">
+                                                                        <span class="mphb-currency">₹</span>{{ selected_room.price }}
+                                                                    </span>
+                                                                </span>
+                                                                <span class="mphb-recommendation-item-count">1 × </span>
+                                                                <a href="{% url 'rooms:room_detail' selected_room.id %}"
                                                                     class="mphb-recommendation-item-link"
-                                                                    target="_blank"> {{ room.name }} </a> <small
-                                                                    class="mphb-recommendation-item-guests"> <span
-                                                                        class="mphb-recommendation-item-guests-label">
-                                                                        Max occupancy: </span> <span
-                                                                        class="mphb-recommendation-item-adults mphb-adults-4">
-                                                                        {{ room.capacity }} adults </span> </small>
+                                                                    target="_blank"> {{ selected_room.name }} </a>
+                                                                <small class="mphb-recommendation-item-guests">
+                                                                    <span
+                                                                        class="mphb-recommendation-item-guests-label">Max occupancy: </span>
+                                                                    <span
+                                                                        class="mphb-recommendation-item-adults mphb-adults-4">{{ selected_room.capacity }} adults </span>
+                                                                </small>
                                                             </div>
                                                         </li>
                                                     </ul>
-                                                    <p class="mphb-recommendation-total"> <span
-                                                            class="mphb-recommendation-total-title">Total:</span> <span
-                                                            class="mphb-recommendation-total-value"> <span
-                                                                class="mphb-price"><span
-                                                                    class="mphb-currency">₹</span>{{ room.price }}</span> </span></p>
+                                                    <p class="mphb-recommendation-total">
+                                                        <span class="mphb-recommendation-total-title">Total:</span>
+                                                        <span class="mphb-recommendation-total-value">
+                                                            <span class="mphb-price">
+                                                                <span class="mphb-currency">₹</span>{{ selected_room.price }}
+                                                            </span>
+                                                        </span>
+                                                    </p>
+                                                    {% if is_available %}
                                                     <button
-                                                        class="button mphb-button mphb-recommendation-reserve-button">
-                                                        Reserve </button>
+                                                        class="button mphb-button mphb-recommendation-reserve-button">Reserve</button>
+                                                    {% else %}
+                                                    {% if capacity_exceeded %}
+                                                   <br> <p style="font-size: 1.5em; font-weight: bold;">Room allowance occupancy is {{ selected_room.capacity }} you selected  {{ adults }} adult{{ adults|pluralize }}. Please check other rooms.</p>
+                                                    {% else %}
+                                                    <p>Sorry, the {{ selected_room.name }} is already reserved.</p>
+                                                    {% endif %}
+                                                    {% endif %}
                                                     <div class="mphb-clear"></div>
                                                 </form>
-                                                <form action="#"
-                                                    method="POST" id="mphb-reservation-cart"
-                                                    class="mphb-reservation-cart mphb-empty-cart"> <input type="hidden"
-                                                        name="mphb_check_in_date" value="2025-03-25"> <input
-                                                        type="hidden" name="mphb_check_out_date" value="2025-03-26">
+
+                                                <form action="#" method="POST"
+                                                    id="mphb-reservation-cart"
+                                                    class="mphb-reservation-cart mphb-empty-cart">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="mphb_check_in_date"
+                                                        value="{{ check_in }}">
+                                                    <input type="hidden" name="mphb_check_out_date"
+                                                        value="{{ check_out }}">
                                                     <input type="hidden" id="mphb-checkout-nonce"
-                                                        name="mphb-checkout-nonce" value="81e3beccd4"><input
-                                                        type="hidden" name="_wp_http_referer"
-                                                        value="/search-results/?mphb_check_in_date=2025-03-25&amp;mphb_check_out_date=2025-03-26&amp;mphb_adults=1&amp;mphb_children=0">
+                                                        name="mphb-checkout-nonce" value="81e3beccd4">
+                                                    <input type="hidden" name="_wp_http_referer"
+                                                        value="/search-results/?mphb_check_in_date={{ check_in }}&mphb_check_out_date={{ check_out }}&mphb_adults={{ adults }}&mphb_children=0">
                                                     <div class="mphb-reservation-details">
-                                                        <p class="mphb-empty-cart-message"><strong>Select from available
-                                                            Rooms.</strong></p>
-                                                        <p class="mphb-cart-message"></p>
-                                                        
-                                                    </div> 
+                                                        {% if not other_available_rooms %}
+                                                        <p class="mphb-empty-cart-message"><strong>No available rooms found.</strong></p>
+                                                        {% else %}
+                                                        <p class="mphb-cart-message"><strong>Select from available rooms below.</strong>
+                                                        </p>
+                                                        {% endif %}
+                                                    </div>
                                                 </form>
-                                                <!-- others available  rooms section starts -->
+                                               <br> <h2 class="mphb-recommendation-title">Checkout Other Available Rooms</h2> 
+                                                <!-- others available rooms section starts -->
+                                                {% for room in other_available_rooms %}
                                                 <div
                                                     class="mphb-room-type post-1943 mphb_room_type type-mphb_room_type status-publish has-post-thumbnail mphb_room_type_category-economy mphb_room_type_tag-city mphb_room_type_tag-economy mphb_room_type_facility-4-private-pools mphb_room_type_facility-air-conditioning mphb_room_type_facility-airport-transfer mphb_room_type_facility-all-inclusive mphb_room_type_facility-wifi mphb_room_type_facility-laundry mphb_room_type_facility-smart-tv mphb_room_type_facility-under-protection mphb-room-type-adults-2 mphb-room-type-children-1 ">
-                                                    <p class="post-thumbnail mphb-loop-room-thumbnail"> 
+                                                    <p class="post-thumbnail mphb-loop-room-thumbnail">
                                                         <a href="{% url 'rooms:room_detail' room.id %}">
                                                             {% if room.image %}
-                                                                <img src="{{ room.image.url }}" alt="{{ room.name }}">
+                                                            <img src="{{ room.image.url }}" alt="{{ room.name }}">
                                                             {% else %}
-                                                                <img src="{% static 'images/placeholder.jpg' %}" alt="No image available">     
+                                                            <img src="{% static 'images/placeholder.jpg' %}"
+                                                                alt="No image available">
                                                             {% endif %}
                                                         </a>
-                                                        
                                                     </p>
-                                                    <h2 class="mphb-room-type-title entry-title"> <a
-                                                            class="mphb-room-type-title"
-                                                            href="#">{{ room.name }}</a></h2>
+                                                    <h2 class="mphb-room-type-title entry-title">
+                                                        <a class="mphb-room-type-title" href="#">{{ room.name }}</a>
+                                                    </h2>
                                                     <div class="knsl-text-light knsl-text-sm knsl-mb-20">
                                                         <p>{{ room.description }}</p>
                                                     </div>
                                                     <p class="mphb-regular-price">
-                                                        <span class="mphb-price"><span
-                                                                class="mphb-currency">₹</span>{{ room.price }}</span> <span
-                                                            class="mphb-price-period"
+                                                        <span class="mphb-price">
+                                                            <span class="mphb-currency">₹</span>{{ room.price }}
+                                                        </span>
+                                                        <span class="mphb-price-period"
                                                             title="Based on your search parameters">per night</span>
                                                     </p>
-                                                    <p class="mphb-view-details-button-wrapper"> <a
-                                                            class="button mphb-view-details-button"
-                                                            href="#">View
-                                                            Details</a></p>
-                                                            
-                                                    <div class="mphb-reserve-room-section" >
-                                                         
-                                                        <button class="button mphb-button mphb-book-button">Book</button>
-                                                        
-                                                    </div>
+                                                    <p class="mphb-view-details-button-wrapper">
+                                                        <a class="button mphb-view-details-button"
+                                                            href="{% url 'rooms:room_detail' room.id %}">View
+                                                            Details</a>
+                                                    </p>
+                                                    
                                                 </div>
-                                                 <!--others available  rooms section end -->
-                                                
-                                               
-                                            
-                                                
+                                                {% endfor %}
+                                                <!-- others available rooms section end -->
                                             </div>
                                         </div>
                                     </div>
@@ -477,9 +495,10 @@
                                         </div>
                                     </div>
                                 </section>
-                                 <!--  have a questions? ends -->
-                                   
-                                <!-- contact form starts  -->
+                                <!--  have a questions? ends -->
+
+                                
+                                <!-- Contact Form Starts -->
                                 <section
                                     class="elementor-section elementor-inner-section elementor-element elementor-element-b231243 elementor-section-full_width elementor-section-height-default elementor-section-height-default"
                                     data-id="b231243" data-element_type="section">
@@ -492,21 +511,7 @@
                                                     data-widget_type="kinsley-contact-form.default">
                                                     <div class="elementor-widget-container">
                                                         <section class="knsl-transition-none knsl-p-0-100">
-                                                            <noscript><img decoding="async"
-                                                                    src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg"
-                                                                    class="knsl-deco-left" alt="palm" /></noscript><img
-                                                                decoding="async"
-                                                                src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg"
-                                                                data-src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg"
-                                                                class="knsl-deco-left ls-is-cached lazyloaded"
-                                                                alt="palm"> <noscript><img decoding="async"
-                                                                    src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg"
-                                                                    class="knsl-deco-right" alt="palm" /></noscript><img
-                                                                decoding="async"
-                                                                src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg"
-                                                                data-src="https://kinsley.bslthemes.com/wp-content/themes/kinsley/assets/img/palm.svg"
-                                                                class="knsl-deco-right ls-is-cached lazyloaded"
-                                                                alt="palm">
+                                                           
                                                             <div class="container">
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
@@ -520,30 +525,33 @@
                                                                                     <ul></ul>
                                                                                 </div>
                                                                                 <form
-                                                                                    action="#"
+                                                                                    action="{% url 'contact:contact_us' %}"
                                                                                     method="post"
                                                                                     class="wpcf7-form init"
                                                                                     aria-label="Contact form"
                                                                                     novalidate="novalidate"
                                                                                     data-status="init">
-                                                                                   
+                                                                                    {% csrf_token %}
                                                                                     <div class="row">
-                                                                                        <div class="col-lg-6"> <span
+                                                                                        <div class="col-lg-6">
+                                                                                            <span
                                                                                                 class="wpcf7-form-control-wrap"
-                                                                                                data-name="cf-name"><input
-                                                                                                    size="40"
+                                                                                                data-name="cf-name">
+                                                                                                <input size="40"
                                                                                                     maxlength="400"
                                                                                                     class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
                                                                                                     aria-required="true"
                                                                                                     aria-invalid="false"
                                                                                                     placeholder="Name"
                                                                                                     value="" type="text"
-                                                                                                    name="cf-name"></span>
+                                                                                                    name="cf-name">
+                                                                                            </span>
                                                                                         </div>
-                                                                                        <div class="col-lg-6"> <span
+                                                                                        <div class="col-lg-6">
+                                                                                            <span
                                                                                                 class="wpcf7-form-control-wrap"
-                                                                                                data-name="cf-email"><input
-                                                                                                    size="40"
+                                                                                                data-name="cf-email">
+                                                                                                <input size="40"
                                                                                                     maxlength="400"
                                                                                                     class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
                                                                                                     aria-required="true"
@@ -551,17 +559,21 @@
                                                                                                     placeholder="Email"
                                                                                                     value=""
                                                                                                     type="email"
-                                                                                                    name="cf-email"></span>
+                                                                                                    name="cf-email">
+                                                                                            </span>
                                                                                         </div>
-                                                                                        <div class="col-lg-12"> <span
+                                                                                        <div class="col-lg-12">
+                                                                                            <span
                                                                                                 class="wpcf7-form-control-wrap"
-                                                                                                data-name="cf-message"><textarea
-                                                                                                    cols="40" rows="10"
+                                                                                                data-name="cf-message">
+                                                                                                <textarea cols="40"
+                                                                                                    rows="10"
                                                                                                     maxlength="2000"
                                                                                                     class="wpcf7-form-control wpcf7-textarea"
                                                                                                     aria-invalid="false"
                                                                                                     placeholder="Message"
-                                                                                                    name="cf-message"></textarea></span>
+                                                                                                    name="cf-message"></textarea>
+                                                                                            </span>
                                                                                         </div>
                                                                                         <p
                                                                                             class="col-lg-12 knsl-text-sm">
@@ -593,6 +605,7 @@
                                         </div>
                                     </div>
                                 </section>
+                                <!-- Contact Form Ends -->
                             </div>
                         </div>
                     </div>
@@ -602,10 +615,12 @@
         </div>
         <!-- footer -->
         
+        {% include 'footer.html' %}
+
     </div> <!-- page wrapper end --> <!-- popup -->
-    
-   
-    
+
+
+
 </body>
 
 </html>
