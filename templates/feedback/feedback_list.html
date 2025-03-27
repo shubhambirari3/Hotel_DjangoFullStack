@@ -109,14 +109,14 @@
             </h3>
             <p>
                 {% if feedback.user %}
-                    {{ feedback.user.email }}
+                    <span style="color: #131313;">{{ feedback.user.email }}</span>
                 {% else %}
                     {{ feedback.email }}
                 {% endif %}
             </p>
             <p>From {{ feedback.country|default:'Not specified' }}</p>
             
-            <div class="stars">
+            <div class="stars" style="color: #ffcc00;">
                 {% for i in "12345" %}
                     {% if forloop.counter <= feedback.rating %}
                         ★

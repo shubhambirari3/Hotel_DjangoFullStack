@@ -46,7 +46,7 @@ def login_page(request):
         existing_user = authenticate(username=username, password=password)
         if existing_user is not None:
             login(request, existing_user)
-            return redirect('accounts:profile')  # Redirect to profile after login
+            return redirect('home')  # Redirect to profile after login
         else:
             messages.error(request, 'Invalid Username or Password', extra_tags='danger')
             return redirect('accounts:login_page')

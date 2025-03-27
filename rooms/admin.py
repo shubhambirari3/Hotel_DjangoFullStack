@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Room, RoomCategory ,RoomImage
+from .models import Room, RoomCategory, RoomImage, Reservation, Coupon
 
 class RoomImageInline(admin.TabularInline):
     model = RoomImage
-    extra = 1  # Number of empty image fields to display by default
+    extra = 1
     fields = ('image',)
 
 @admin.register(Room)
@@ -18,4 +18,17 @@ class RoomCategoryAdmin(admin.ModelAdmin):
 @admin.register(RoomImage)
 class RoomImageAdmin(admin.ModelAdmin):
     list_display = ('room', 'image')
-    list_filter = ('room',  )
+    list_filter = ('room',)
+
+@admin.register(Reservation)
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ('user','room', 'check_in_date', 'check_out_date', 'adults', 'total',  'created_at')
+    list_filter = ('room', 'check_in_date', 'check_out_date', 'payment_method')
+    search_fields = ('first_name', 'last_name', 'email', 'room__name')
+    date_hierarchy = 'created_at'
+
+@admin.register(Coupon)
+class CouponAdmin(admin.ModelAdmin):
+    list_display = ('code', 'discount_percentage', 'active', 'valid_from', 'valid_to')
+    list_filter = ('active', 'valid_from', 'valid_to')
+    search_fields = ('code',)

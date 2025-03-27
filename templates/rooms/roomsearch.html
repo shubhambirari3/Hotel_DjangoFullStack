@@ -1,4 +1,4 @@
-<html lang="en-US" style="">
+<html lang="en-US" >
 
 <head> <!-- Meta Data -->
     <meta charset="UTF-8">
@@ -223,7 +223,7 @@
                                                     <strong style="color: black;">{{ check_in }}</strong> - 
                                                     <strong style="color: black;">{{ check_out }}</strong>
                                                 </p>
-                                                <h2 class="mphb-recommendation-title">This Room Recommended for {{ adults }} adult{{ adults|pluralize }}</h2>
+                                                <h2 class="mphb-recommendation-title">This Room Recommended for {{ selected_room.capacity }} Lodger</h2>
 
                                                 <!-- reserve room that you select to booking section starts -->
                                                 <div
@@ -239,8 +239,12 @@
                                                             {% endif %}
                                                         </a>
                                                     </p>
-                                                    <h2 class="mphb-room-type-title entry-title">
-                                                        <a class="mphb-room-type-title" href="#">{{ selected_room.name }}</a>
+                                                    <h2 class="mphb-room-type-title entry-title" style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <a class="mphb-room-type-title" href="">{{ selected_room.name }}</a>
+                                                        <div style="font-size: 16px; font-weight: normal; color: #2f2f2f;">
+                                                            <span>Adults: {{ selected_room.capacity }}</span> | 
+                                                            <span>Size: {{ selected_room.get_size_display }}</span>
+                                                        </div>
                                                     </h2>
                                                     <div class="knsl-text-light knsl-text-sm knsl-mb-20">
                                                         <p>{{ selected_room.description }}</p>
@@ -253,17 +257,13 @@
                                                 </div>
                                                 <!-- reserve room section end -->
                                                      
-                                                <form action="#" method="POST"
+                                                <form action="{% url 'rooms:room_booking' %}" method="POST"
                                                     id="mphb-recommendation" class="mphb-recommendation">
                                                     {% csrf_token %}
-                                                    <input type="hidden" id="mphb-checkout-recommendation-nonce"
-                                                        name="mphb-checkout-recommendation-nonce" value="81e3beccd4">
-                                                    <input type="hidden" name="_wp_http_referer"
-                                                        value="/search-results/?mphb_check_in_date={{ check_in }}&mphb_check_out_date={{ check_out }}&mphb_adults={{ adults }}&mphb_children=0">
-                                                    <input type="hidden" name="mphb_check_in_date"
-                                                        value="{{ check_in }}">
-                                                    <input type="hidden" name="mphb_check_out_date"
-                                                        value="{{ check_out }}">
+                                                    <input type="hidden" name="room_id" value="{{ selected_room.id }}">
+                                                    <input type="hidden" name="check_in" value="{{ check_in }}">
+                                                    <input type="hidden" name="check_out" value="{{ check_out }}">
+                                                    <input type="hidden" name="adults" value="{{ adults }}">
                                                     <ul class="mphb-recommendation-details-list">
                                                         <li>
                                                             <input name="mphb_rooms_details[{{ selected_room.id }}]"
@@ -302,33 +302,13 @@
                                                     {% if capacity_exceeded %}
                                                    <br> <p style="font-size: 1.5em; font-weight: bold;">Room allowance occupancy is {{ selected_room.capacity }} you selected  {{ adults }} adult{{ adults|pluralize }}. Please check other rooms.</p>
                                                     {% else %}
-                                                    <p>Sorry, the {{ selected_room.name }} is already reserved.</p>
+                                                    <p style="font-size: 1.5em; font-weight: bold;" >Sorry, the {{ selected_room.name }} is already reserved. Please check other rooms.</p>
                                                     {% endif %}
                                                     {% endif %}
                                                     <div class="mphb-clear"></div>
                                                 </form>
 
-                                                <form action="#" method="POST"
-                                                    id="mphb-reservation-cart"
-                                                    class="mphb-reservation-cart mphb-empty-cart">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="mphb_check_in_date"
-                                                        value="{{ check_in }}">
-                                                    <input type="hidden" name="mphb_check_out_date"
-                                                        value="{{ check_out }}">
-                                                    <input type="hidden" id="mphb-checkout-nonce"
-                                                        name="mphb-checkout-nonce" value="81e3beccd4">
-                                                    <input type="hidden" name="_wp_http_referer"
-                                                        value="/search-results/?mphb_check_in_date={{ check_in }}&mphb_check_out_date={{ check_out }}&mphb_adults={{ adults }}&mphb_children=0">
-                                                    <div class="mphb-reservation-details">
-                                                        {% if not other_available_rooms %}
-                                                        <p class="mphb-empty-cart-message"><strong>No available rooms found.</strong></p>
-                                                        {% else %}
-                                                        <p class="mphb-cart-message"><strong>Select from available rooms below.</strong>
-                                                        </p>
-                                                        {% endif %}
-                                                    </div>
-                                                </form>
+                                                
                                                <br> <h2 class="mphb-recommendation-title">Checkout Other Available Rooms</h2> 
                                                 <!-- others available rooms section starts -->
                                                 {% for room in other_available_rooms %}
@@ -344,8 +324,12 @@
                                                             {% endif %}
                                                         </a>
                                                     </p>
-                                                    <h2 class="mphb-room-type-title entry-title">
-                                                        <a class="mphb-room-type-title" href="#">{{ room.name }}</a>
+                                                    <h2 class="mphb-room-type-title entry-title" style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <a class="mphb-room-type-title" href="{% url 'rooms:room_detail' room.id %}">{{ room.name }}</a>
+                                                        <div style="font-size: 16px; font-weight: normal; color: #2f2f2f;">
+                                                            <span>Adults: {{ room.capacity }}</span> | 
+                                                            <span>Size: {{ room.get_size_display }}</span>
+                                                        </div>
                                                     </h2>
                                                     <div class="knsl-text-light knsl-text-sm knsl-mb-20">
                                                         <p>{{ room.description }}</p>
@@ -615,11 +599,11 @@
         </div>
         <!-- footer -->
         
-        {% include 'footer.html' %}
+       
 
     </div> <!-- page wrapper end --> <!-- popup -->
 
-
+    {% include 'footer.html' %}
 
 </body>
 
