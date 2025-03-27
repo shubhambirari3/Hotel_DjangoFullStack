@@ -21,9 +21,11 @@
 
     <!-- Booking and Profile Section -->
     <div style="display: flex; align-items: center; gap: 15px; margin-right: 50px;">
-        <i class="fas fa-shopping-bag" style="font-size: 20px; color: #333; position: relative;">
-            <span style="position: absolute; top: -8px; right: -10px; background-color: #28A745; color: white; font-size: 12px; font-weight: bold; border-radius: 50%; width: 18px; height: 18px; display: flex; justify-content: center; align-items: center;">0</span>
-        </i> 
+        <a href="{% url 'rooms:my_bookings' %}">
+            <i class="fas fa-shopping-bag" style="font-size: 20px; color: #333; position: relative;">
+                <span style="position: absolute; top: -8px; right: -10px; background-color: #28A745; color: white; font-size: 12px; font-weight: bold; border-radius: 50%; width: 18px; height: 18px; display: flex; justify-content: center; align-items: center;">{{ booking_count }}</span>
+            </i>
+        </a>
         <br>
         {% if user.is_authenticated %}
             <a href="{% url 'accounts:profile' %}">

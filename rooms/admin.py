@@ -22,7 +22,7 @@ class RoomImageAdmin(admin.ModelAdmin):
 
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('user','room', 'check_in_date', 'check_out_date', 'adults', 'total',  'created_at')
+    list_display = ('user', 'room', 'check_in_date', 'check_out_date', 'adults', 'total', 'payment_method', 'created_at')
     list_filter = ('room', 'check_in_date', 'check_out_date', 'payment_method')
     search_fields = ('first_name', 'last_name', 'email', 'room__name')
     date_hierarchy = 'created_at'

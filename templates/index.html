@@ -294,101 +294,103 @@
     }
   </style>
 
-</head>
+  </head>
 
-<body>
-  {% include 'navbar.html' %}
+  <body>
+    {% include 'navbar.html' %}
 
-  <!-- Hero Section -->
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 style="white-space: nowrap;">Welcome to Kinsley</h1>
-      <p>Delenti nostrum laboriosam praesentium quasi quam voluptate.</p>
-      <br><br>
-      <div class="search-form" style="
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.631), rgba(240, 248, 255, 0.568));
-      backdrop-filter: blur(12px);
-      border-radius: 15px;
-      padding: 15px 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      transition: all 0.3s ease;">
-        <label for="Check-in Date" style="
-        font-size: 15px;
-        color: #333;
-        font-weight: 500;
-        padding: 10px 15px;
-        background: transparent;
-        backdrop-filter: blur(100%);">
-          Check-in
-        </label>
-        <input type="date" id="Check-in Date" style="
-        padding: 10px 15px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.5);
-        outline: none;
-        transition: border-color 0.3s ease;
-        color: #333;
-        height: 40px;">
-        <label for="Check-out Date" style="
-        font-size: 15px;
-        color: #333;
-        font-weight: 500;
-        padding: 10px 15px;
-        background: transparent;
-        backdrop-filter: blur(100%);">
-          Check-out
-        </label>
-        <input type="date" id="Check-out Date" style="
-        padding: 10px 15px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.584);
-        outline: none;
-        transition: border-color 0.3s ease;
-        color: #333;
-        height: 40px;">
-        <select style="
-        padding: 10px 15px;
-        background-color: transparent;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        outline: none;
-        transition: border-color 0.3s ease;
-        height: 40px;">
-          <option value="1">1 Adult</option>
-          <option value="2">2 Adults</option>
-          <option value="3">3 Adults</option>
-          <option value="4">4 Adults</option>
-          <option value="5">5 Adults</option>
-          <option value="6">6 Adults</option>
-          <option value="7">7 Adults</option>
-          <option value="8">8 Adults</option>
-          <option value="9">9 Adults</option>
-          <option value="10">10 Adults</option>
-        </select>
-        <label for="Search" style="
-        background: #1e7de9;
-        padding: 10px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        height: 40px;
-        display: flex;
-        align-items: center;">
-          <i class="fas fa-search" style="color: white;"></i>
-        </label>
+  
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 style="white-space: nowrap;">Welcome to Kinsley</h1>
+        <p>Delenti nostrum laboriosam praesentium quasi quam voluptate.</p>
+        <br><br>
+        <form method="GET" action="{% url 'rooms:room_list_filtered' %}" class="search-form" style="
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.631), rgba(240, 248, 255, 0.568));
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 15px 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 0;
+            transition: all 0.3s ease;">
+            <label for="check_in" style="
+                font-size: 15px;
+                color: #333;
+                font-weight: 500;
+                padding: 10px 15px;
+                background: transparent;
+                margin: 0%;
+                backdrop-filter: blur(100%);">
+                Check-in
+            </label>
+            <input type="date" id="check_in" name="check_in" required style="
+                padding: 10px 15px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.5);
+                outline: none;
+                transition: border-color 0.3s ease;
+                color: #333;
+                margin: 0%;
+                height: 40px;">
+            <label for="check_out" style="
+                font-size: 15px;
+                color: #333;
+                font-weight: 500;
+                padding: 10px 15px;
+                margin: 0%;
+                background: transparent;
+                backdrop-filter: blur(100%);">
+                Check-out
+            </label>
+            <input type="date" id="check_out" name="check_out" required style="
+                padding: 10px 15px;
+                margin: 0%;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.584);
+                outline: none;
+                transition: border-color 0.3s ease;
+                color: #333;
+                height: 40px;">
+            <select name="adults" style="
+                padding: 10px 15px;
+                background-color: transparent;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                outline: none;
+                transition: border-color 0.3s ease;
+                height: 40px;">
+                <option value="1">1 Adult</option>
+                <option value="2">2 Adults</option>
+                <option value="3">3 Adults</option>
+                <option value="4">4 Adults</option>
+                <option value="5">5 Adults</option>
+                <option value="6">6 Adults</option>
+            </select>
+            <button type="submit" style="
+                background: #1e7de9;
+                padding: 10px 15px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                border: none;">
+                <i class="fas fa-search" style="color: white;"></i>
+            </button>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
 
 
-  <section style="background-color: #f8fcfd; padding: 50px 0;">
+    <section style="background-color: #f8fcfd; padding: 50px 0;">
     <!-- Features Section -->
     <div class="features" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 50px;">
       <div class="feature-item"
