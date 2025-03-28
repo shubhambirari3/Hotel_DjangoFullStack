@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='reservation',
             name='payment_method',
-            field=models.CharField(choices=[('pay_on_arrival', 'Pay on Arrival'), ('upi', 'UPI'), ('cards', 'Cards')], max_length=20),
+            field=models.CharField(choices=[('pay_on_arrival', 'Pay on Arrival'), ('upi', 'UPI'), ('cards', 'Cards')], max_length=20 ,default='pay_on_arrival'),
         ),
     ]

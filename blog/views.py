@@ -41,7 +41,7 @@ def blog_detail(request, blog_id):
     }
     return render(request, 'blog/blog_detail.html', context)
 
-@login_required(login_url='accounts:signup')
+@login_required(login_url='accounts:login_page')
 def create_blog(request):
     if request.method == 'POST':
         form = BlogForm(request.POST, request.FILES)

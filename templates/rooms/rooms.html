@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms - Kinsley</title>
+    <title>Rooms </title>
     
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -18,8 +18,8 @@
 
     <!-- Main Content -->
     <section class="rooms-section">
-        <h1>Choose your Room</h1>
-        <p>Laborum accusantium libero commodi...</p>
+        <h1>Choose Your Perfect Stay</h1>
+        <p>Discover a variety of rooms at Goan Paradise Retreat, each crafted to offer comfort, style, and a touch of Goan charm.</p>
         <div class="breadcrumb">
             <span><a href="{% url 'home' %}">Home</a></span> > <span class="current">Rooms</span>
         </div>
@@ -36,31 +36,35 @@
     </section>
 
     <!-- Room Listings -->
-    <div class="container">
+    <div class="container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 20px;">
         {% for room in rooms %}
-        <div class="room-card">
-            <a href="{% url 'rooms:room_detail' room.id %}">
-                {% if room.image %}
-                    <img src="{{ room.image.url }}" alt="{{ room.name }}">
-                {% else %}
-                    <img src="{% static 'images/placeholder.jpg' %}" alt="No image available">     
-                {% endif %}
-            </a>
-            <div class="room-details">
-                <div class="info">
-                    <span>Adults: {{ room.capacity }}</span>
-                    <span>Size: {{ room.get_size_display }}</span>
-                </div>
-                <h3><a href="{% url 'rooms:room_detail' room.id %}">{{ room.name }}</a></h3>
-                <p>{{ room.description }}</p>
-                <div class="price">
-                    <span>₹{{ room.price }} per night</span>
-                    <button>Book</button>
+            <div class="room-card" style="background: #fff; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <a href="{% url 'rooms:room_detail' room.id %}">
+                    {% if room.image %}
+                        <img src="{{ room.image.url }}" alt="{{ room.name }}" style="width: 100%; height: 280px; object-fit: cover; display: block;">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.jpg' %}" alt="No image available" style="width: 100%; height: 280px; object-fit: cover; display: block;">
+                    {% endif %}
+                </a>
+                <div class="room-details" style="padding: 15px;">
+                    <div class="info" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                        <span>Adults: {{ room.capacity }}</span>
+                        <span>Size: {{ room.get_size_display }}</span>
+                    </div>
+                    <h3 style="margin: 0 0 10px; font-size: 20px;">
+                        <a href="{% url 'rooms:room_detail' room.id %}" style="text-decoration: none; color: #333; font-weight: bold;">{{ room.name }}</a>
+                    </h3>
+                    <p style="margin: 0 0 10px; font-size: 16px; color: #555; line-height: 1.5;">
+                        {{ room.description|slice:":100" }}...
+                    </p>
+                    <div class="price" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 18px; color: #2a2a2a;">₹{{ room.price }} per night</span>
+                        <button style="background: #007bff; color: #fff; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">Book</button>
+                    </div>
                 </div>
             </div>
-        </div>
         {% empty %}
-        <p>No rooms available in this category.</p>
+            <p style="grid-column: span 3; text-align: center; font-size: 18px; color: #777; padding: 20px;">No rooms available in this category.</p>
         {% endfor %}
     </div>
 

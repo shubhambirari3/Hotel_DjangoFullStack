@@ -85,7 +85,8 @@ class Reservation(models.Model):
         max_length=20,
         choices=[('pay_on_arrival', 'Pay on Arrival'), ('upi', 'UPI'), ('cards', 'Cards')],
         null=False,  # Optional for now
-        blank=False
+        blank=False,
+        default='pay_on_arrival',
     )
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     gst = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)

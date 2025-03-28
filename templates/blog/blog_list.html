@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - Kinsley</title>
+    <title>Blogs </title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -12,8 +12,8 @@
 <body>
     {% include 'navbar.html' %}
     <section class="rooms-section">
-        <h1>Our Blog</h1>
-        <p>Laborum accusantium libero commodi. Voluptate consequatur itaque expedita accusamus impedit perspiciatis asperiores necessitatibus assumenda magnam ipsa.</p>
+        <h1>Our Blogs</h1>
+        <p>"Explore our blog for travel tips, local stories, and insights about Goa and Goan Paradise Retreat.Browse by Category.</p>
         <div class="breadcrumb">
             <span><a href="{% url 'home' %}">Home</a></span> > <span class="current">Blog</span>
         </div> <br>
@@ -35,27 +35,32 @@
             {% endfor %}
         </div>
     </section>
-    <section class="container">
+    <section class="container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 20px;">
         {% for blog in blogs %}
-        <div class="room-card">
-            <a href="{% url 'blog:blog_detail' blog.id %}">
-                {% if blog.image1 %}
-                    <img src="{{ blog.image1.url }}" alt="{{ blog.title }}">
-                {% else %}
-                    <img src="{% static 'images/placeholder.jpg' %}" alt="No image">
-                {% endif %}
-            </a>
-            <div class="room-details">
-                <div class="info">
-                    <span>by {{ blog.author.get_full_name }}</span>
-                    <span>on {{ blog.created_at|date:"F d, Y" }}</span>
+            <div class="room-card" style="background: #fff; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <a href="{% url 'blog:blog_detail' blog.id %}">
+                    {% if blog.image1 %}
+                        <img src="{{ blog.image1.url }}" alt="{{ blog.title }}" style="width: 100%; height: 280px; object-fit: cover; display: block;">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.jpg' %}" alt="No image" style="width: 100%; height: 280px; object-fit: cover; display: block;">
+                    {% endif %}
+                </a>
+                
+                <div class="room-details" style="padding: 15px;">
+                    <div class="info" style="font-size: 14px; color: #666; margin-bottom: 10px;">
+                        <span>{{ blog.author.get_full_name }}</span>
+                        <span>{{ blog.category.name }} | {{ blog.created_at|date:"F d, Y" }}</span>
+                    </div>
+                    <br>
+                    <h3 style="margin: 0 0 10px; font-size: 20px;">
+                        <a href="{% url 'blog:blog_detail' blog.id %}" style="text-decoration: none; color: #333; font-weight: bold;">{{ blog.title }}</a>
+                    </h3>
+                    <br>
+                    <p style="margin: 0; font-size: 16px; color: #555; line-height: 1.5;">{{ blog.description|truncatewords:20 }}</p>
                 </div>
-                <h3><a href="{% url 'blog:blog_detail' blog.id %}">{{ blog.title }}</a></h3>
-                <p>{{ blog.description|truncatewords:20 }}</p>
             </div>
-        </div>
         {% empty %}
-        <p>No blogs available in this category.</p>
+            <p style="grid-column: span 3; text-align: center; font-size: 18px; color: #777; padding: 20px;">No blogs available in this category.</p>
         {% endfor %}
     </section>
     {% include 'footer.html' %}
