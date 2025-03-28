@@ -4,7 +4,7 @@
     <div class="footer-container">
         <div class="footer-brand">
             <h2 style="color: white;">Hotel Paradise</h2>
-            <p style="color: white;"> Where luxury meets tradition in the heart of Goa. Connect with us on social media for the latest updates and exclusive offers....</p>
+            <p style="color: white;">Where luxury meets tradition in the heart of Goa. Connect with us on social media for the latest updates and exclusive offers...</p>
             <div class="social-icons">
                 <a href="#"><i class="fas fa-times" style="color: white;"></i></a>
                 <a href="#"><i class="fab fa-facebook-f" style="color: white;"></i></a>
@@ -33,7 +33,7 @@
                 <li><a href="#" style="color: white;">FAQ</a></li>
                 <li><a href="#" style="color: white;">Gallery</a></li>
                 <li><a href="#" style="color: white;">Menu</a></li>
-                <li><a href="#" style="color: white;">Restaurant</a></li>
+                
             </ul>
         </div>
         <div class="footer-instagram">
@@ -47,5 +47,14 @@
                 <img src="{% static 'images/about-6-140x140.jpg' %}" alt="Instagram 6">
             </div>
         </div>
+    </div>
+    <!-- Bottom Centered Footer Text -->
+    <div style="background-color: #1a1a2e; color: white; padding: 20px; text-align: center; margin-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <p style="margin: 0;">© 2025 Hotel Paradise,Goa. All rights reserved.</p>
+        <p style="font-size: 14px; margin-top: 10px; color: #ccc;">
+            {% with footer_text=footer_text_obj.text %}
+                <span style="font-weight: bold; font-size: 16px;">{{ footer_text }}</span>
+            {% endwith %}
+        </p>
     </div>
 </footer>

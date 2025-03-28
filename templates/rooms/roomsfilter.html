@@ -15,7 +15,7 @@
     {% include 'navbar.html' %}
 
     <section class="rooms-section">
-        <h1>Available Rooms <br><br> <small style="color: rgb(80, 80, 80);">{{ check_in }} - {{ check_out }} | {{ adults }} adult{{ adults|pluralize }}</small></h1>
+        <h1>Available Rooms <br><br> <small style="color: rgb(80, 80, 80);">{{ check_in }} ←→ {{ check_out }} | {{ adults }} adult{{ adults|pluralize }}</small></h1>
         <div class="breadcrumb">
             <span><a href="{% url 'home' %}">Home</a></span> > <span class="current">Available Rooms</span>
         </div>
@@ -37,7 +37,7 @@
                     <span>Size: {{ room.get_size_display }}</span>
                 </div>
                 <h3><a href="{% url 'rooms:room_detail' room.id %}">{{ room.name }}</a></h3>
-                <p>{{ room.description }}</p>
+                <p>{{ room.description|slice:":100"  }}</p>
                 <div class="price">
                     <span>₹{{ room.price }} per night</span>
                     <button>Book</button>

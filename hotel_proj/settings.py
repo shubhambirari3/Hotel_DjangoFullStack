@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'feedback',
     'contact',
     'blog',
+    'footer',
 ]
 
 # Crispy Forms
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'hotel_proj.urls'
@@ -73,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'rooms.context_processors.booking_count',
+                'footer.context_processors.footer_text',
             ],
         },
     },
