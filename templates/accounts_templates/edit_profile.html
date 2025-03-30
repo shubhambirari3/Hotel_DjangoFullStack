@@ -56,17 +56,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding-top: 80px; /* Adds padding above the container */
         }
 
         .card {
             width: 100%;
-            max-width: 600px; /* Slightly wider than signup for more fields */
+            max-width: 500px; /* Reduced width for a smaller form */
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             color: white;
             border: none;
             border-radius: 10px;
-            padding: 30px; /* Adjusted padding */
+            padding: 20px; /* Reduced padding */
         }
 
         .card h1 {
@@ -111,17 +112,113 @@
         hr {
             border-color: rgba(255, 255, 255, 0.5);
         }
+
+        
+        /* Navbar */
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgb(255, 255, 255); /* Semi-transparent */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+            transition: background 0.3s ease;
+        }
+
+       
+
+        .navbar a {
+            color: #000000;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #007bff; /* Blue hover effect */
+        }
+
+        .navbar-right {
+            display: flex;
+            gap: 10px; /* Space between buttons */
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px; /* Rounded */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px); /* Lift effect */
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5); /* Glow */
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #ff4d4d, #cc0000); /* Gradient */
+            color: white;
+            padding: 6px 12px; /* Smaller padding */
+            font-size: 14px; /* Smaller font size */
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .btn-logout:hover {
+            background: linear-gradient(135deg, #ff6666, #e60000);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.5);
+        }
+
+        .btn-signup {
+            background: linear-gradient(135deg, #28a745, #218838); /* Green gradient */
+            color: white;
+            padding: 6px 12px; /* Smaller padding */
+            font-size: 14px; /* Smaller font size */
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .btn-signup:hover {
+            background: linear-gradient(135deg, #34d058, #28a745);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.5);
+        }
     </style>
 </head>
 <body>
     <!-- Background -->
     <div class="background-container"></div>
 
+    
+    <nav class="navbar">
+        <a href="{% url 'home' %}"> Paradise</a>
+        <div class="navbar-right">
+            <a href="{% url 'accounts:sign_up' %}" class="btn-signup" style="font-size: 12px;">Create Account</a>
+            <a href="{% url 'accounts:logout_user' %}" class="btn-logout" style="font-size: 12px;">Logout</a>
+        </div>
+    </nav>
+
     <!-- Edit Profile Form -->
     {% block content %}
     <div class="edit-container">
         <div class="card shadow-lg">
-            <h1>Edit Profile</h1>
+            <h2>Edit Profile</h2>
             <hr>
             {% if messages %}
                 {% for message in messages %}

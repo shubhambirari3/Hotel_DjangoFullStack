@@ -80,7 +80,7 @@
             position: absolute;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent */
+            background: rgb(255, 255, 255); /* Semi-transparent */
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
@@ -89,12 +89,10 @@
             transition: background 0.3s ease;
         }
 
-        .navbar:hover {
-            background: rgba(0, 0, 0, 0.8); /* Darker on hover */
-        }
+       
 
         .navbar a {
-            color: #fff;
+            color: #000000;
             font-size: 18px;
             text-decoration: none;
             font-weight: 600;
@@ -219,10 +217,10 @@
         <div class="overlay"></div>
 
         <nav class="navbar">
-            <a href="{% url 'home' %}"> Home</a>
+            <a href="{% url 'home' %}"> Paradise</a>
             <div class="navbar-right">
-                <a href="{% url 'accounts:sign_up' %}" class="btn-signup">Create Account</a>
-                <a href="{% url 'accounts:logout_user' %}" class="btn-logout">Logout</a>
+                <a href="{% url 'accounts:sign_up' %}" class="btn-signup" style="font-size: 12px;">Create Account</a>
+                <a href="{% url 'accounts:logout_user' %}" class="btn-logout" style="font-size: 12px;">Logout</a>
             </div>
         </nav>
 
