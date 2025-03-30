@@ -1,5 +1,6 @@
 ﻿
 # https://shubhamb.pythonanywhere.com
+**Note**:To view this website on mobile and tablets, toggle the "Desktop site" option in your browser.
 
 # Hotel Management System
 
@@ -11,7 +12,7 @@ The project has been deployed and is accessible at the following link:
 
 ### https://shubhamb.pythonanywhere.com
 
-**Note**: The website is hosted on a free-tier server and cannot handle high traffic. Please visit one at a time to ensure smooth performance. To view this website on mobile and tablets, toggle the "Desktop site" option in your browser.
+**Note**: The website is hosted on a free-tier server and cannot handle high traffic. Please visit one at a time to ensure smooth performance. 
 
 ## About the Project
 
