@@ -94,8 +94,11 @@
                             <div class="knsl-room-features-lg knsl-mb-30">
                                 <div class="knsl-feature">
                                     <div class="knsl-icon-frame knsl-icon-author">
-                                        {% comment %} Replace with author profile image if available {% endcomment %}
-                                        <img src="https://secure.gravatar.com/avatar/?d=mm" data-src="https://secure.gravatar.com/avatar/?d=mm" alt="{{ blog.author.get_full_name }}" class="lazyloaded">
+                                        {% if blog.author.profile.profile_picture %}
+                                            <img src="{{ blog.author.profile.profile_picture.url }}" alt="{{ blog.author.get_full_name }}">
+                                        {% else %}
+                                            <img src="https://secure.gravatar.com/avatar/?d=mm" alt="{{ blog.author.get_full_name }}">
+                                        {% endif %}
                                     </div>
                                     <span>{{ blog.author.get_full_name }}</span>
                                 </div>
@@ -106,6 +109,7 @@
                                     <span>{{ blog.created_at|date:"F d, Y" }}</span>
                                 </div>
                             </div>
+                            
                             <div class="knsl-blog-post knsl-mb-60">
                                 <div id="post-270" class="post-270 post type-post status-publish format-standard has-post-thumbnail hentry">
                                     <div class="single-post-text">
