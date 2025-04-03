@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile
-from .forms import ProfileForm  # We’ll create this form next
+from .forms import ProfileForm  
 
-# Signup view (modified from your code)
+# Signup view 
 def sign_up(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
@@ -37,23 +37,23 @@ def sign_up(request):
 
     return render(request, 'accounts_templates/signup.html')
 
-# Login view (reused with redirect changed)
+# Login view 
 def login_page(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username') 
         password = request.POST.get('password')
 
         existing_user = authenticate(username=username, password=password)
         if existing_user is not None:
             login(request, existing_user)
-            return redirect('home')  # Redirect to profile after login
+            return redirect('home')  # Redirect to phomw page
         else:
             messages.error(request, 'Invalid Username or Password', extra_tags='danger')
             return redirect('accounts:login_page')
     
     return render(request, 'accounts_templates/login.html')
 
-# Logout view (reused as is)
+# Logout view
 @login_required(login_url='accounts:login_page')
 def logout_user(request):
     logout(request)

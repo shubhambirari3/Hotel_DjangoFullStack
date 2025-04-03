@@ -202,7 +202,7 @@
                                                         <p><strong>Room:</strong> {{ reservation.room.name }}</p>
                                                         <p><strong>Check-in:</strong> {{ reservation.check_in_date|date:"F d, Y" }} at 11:00 AM</p>
                                                         <p><strong>Check-out:</strong> {{ reservation.check_out_date|date:"F d, Y" }} at 10:00 AM</p>
-                                                        <p><strong>Guests:</strong> {{ reservation.adults }} adult{{ reservation.adults|pluralize }}</p>
+                                                        <p><strong>Guests:</strong> {{ reservation.adults }} guest{{ reservation.adults|pluralize }}</p>
                                                         <p><strong>Payment Method:</strong> {{ reservation.get_payment_method_display }}</p>
                                                     </section>
                                                     <br>

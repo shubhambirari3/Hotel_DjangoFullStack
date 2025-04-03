@@ -840,7 +840,7 @@
                                                                                 for:</strong>
                                                                             <span class="mphb-price" style="font-size: x-large;"> {{ room.capacity }} </span>
                                                                             <span class="mphb-price-period"
-                                                                                title="Choose dates to see relevant prices">Adults
+                                                                                title="Choose dates to see relevant prices">guests
                                                                             </span>
                                                                         </p>
                                                                     </div>
@@ -852,6 +852,35 @@
                                             </div>
                                         </section>
                                         <!-- roomcapacity section end -->
+
+                                         <!-- roomsize Section -->
+                                         <section
+                                         class="elementor-section elementor-inner-section elementor-element elementor-element-42382cc elementor-section-full_width elementor-section-height-default elementor-section-height-default"
+                                         data-id="42382cc" data-element_type="section">
+                                         <div class="elementor-container elementor-column-gap-no">
+                                             <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-5e73cb5"
+                                                 data-id="5e73cb5" data-element_type="column">
+                                                 <div class="elementor-widget-wrap elementor-element-populated">
+                                                     <div class="elementor-element elementor-element-65f23fc elementor-widget elementor-widget-kinsley-room-price"
+                                                         data-id="65f23fc" data-element_type="widget"
+                                                         data-widget_type="kinsley-room-price.default">
+                                                         <div class="elementor-widget-container">
+                                                             <div class="knsl-price-card knsl-mb-20">
+                                                                 <div class="knsl-price-number">
+                                                                     <p class="mphb-regular-price"><strong>Room
+                                                                             size:</strong>
+                                                                         <span class="mphb-price" style="font-size: x-large;"> {{ room.get_size_display }} </span>
+                                                                        
+                                                                     </p>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </section>
+                                     <!-- roomcapacity section end -->
 
                                         <!-- Date Booking Form Section Start -->
                                         <section
@@ -908,13 +937,13 @@
                                                                                     inputmode="none" />
                                                                             </p>
                                                                             <p class="mphb_sc_search-adults">
-                                                                                <label for="adults">Adults</label>
+                                                                                <label for="adults">guests</label>
                                                                                 <br />
                                                                                 <select id="adults" name="adults"
                                                                                     required>
                                                                                     {% for i in "123456" %}
                                                                                     <option value="{{ i }}">{{ i }}
-                                                                                        Adult{{ i|pluralize }}</option>
+                                                                                        guest{{ i|pluralize }}</option>
                                                                                     {% endfor %}
                                                                                 </select>
                                                                             </p>

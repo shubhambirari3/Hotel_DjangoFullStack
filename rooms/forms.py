@@ -6,7 +6,7 @@ class BookingForm(forms.ModelForm):
         model = Reservation
         fields = [
             'first_name', 'last_name', 'email', 'phone', 'address', 'city',
-            'state', 'postcode', 'adhar_id', 'note'  # Removed 'payment_method'
+            'state', 'postcode', 'adhar_id', 'note'  
         ]
         widgets = {
             'note': forms.Textarea(attrs={'rows': 4}),

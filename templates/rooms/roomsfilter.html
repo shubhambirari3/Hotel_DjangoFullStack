@@ -15,7 +15,7 @@
     {% include 'navbar.html' %}
 
     <section class="rooms-section">
-        <h1>Available Rooms <br><br> <small style="color: rgb(80, 80, 80);">{{ check_in }} ←→ {{ check_out }} | {{ adults }} adult{{ adults|pluralize }}</small></h1>
+        <h1>Available Rooms <br><br> <small style="color: rgb(80, 80, 80);">{{ check_in }} ←→ {{ check_out }} | {{ adults }} Guest{{ adults|pluralize }}</small></h1>
         <div class="breadcrumb">
             <span><a href="{% url 'home' %}">Home</a></span> > <span class="current">Available Rooms</span>
         </div>
@@ -45,7 +45,7 @@
             </div>
         </div>
         {% empty %}
-        <p>No rooms available for the selected dates and number of adults.</p>
+        <p>No rooms available for the selected dates and number of guests.</p>
         {% endfor %}
     </div>
 

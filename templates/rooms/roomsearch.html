@@ -242,7 +242,7 @@
                                                     <h2 class="mphb-room-type-title entry-title" style="display: flex; justify-content: space-between; align-items: center;">
                                                         <a class="mphb-room-type-title" href="">{{ selected_room.name }}</a>
                                                         <div style="font-size: 16px; font-weight: normal; color: #2f2f2f;">
-                                                            <span>Adults: {{ selected_room.capacity }}</span> | 
+                                                            <span>guests: {{ selected_room.capacity }}</span> | 
                                                             <span>Size: {{ selected_room.get_size_display }}</span>
                                                         </div>
                                                     </h2>
@@ -280,7 +280,7 @@
                                                                     <span
                                                                         class="mphb-recommendation-item-guests-label">Max occupancy: </span>
                                                                     <span
-                                                                        class="mphb-recommendation-item-adults mphb-adults-4">{{ selected_room.capacity }} adults </span>
+                                                                        class="mphb-recommendation-item-adults mphb-adults-4">{{ selected_room.capacity }} guests </span>
                                                                 </small>
                                                             </div>
                                                         </li>
@@ -325,7 +325,7 @@
                                                     <h2 class="mphb-room-type-title entry-title" style="display: flex; justify-content: space-between; align-items: center;">
                                                         <a class="mphb-room-type-title" href="{% url 'rooms:room_detail' room.id %}">{{ room.name }}</a>
                                                         <div style="font-size: 16px; font-weight: normal; color: #2f2f2f;">
-                                                            <span>Adults: {{ room.capacity }}</span> | 
+                                                            <span>guests: {{ room.capacity }}</span> | 
                                                             <span>Size: {{ room.get_size_display }}</span>
                                                         </div>
                                                     </h2>
